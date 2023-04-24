@@ -12,6 +12,12 @@ temaRagnarok.addEventListener('click', () => {
     -ms-transition: background-color 1000ms linear;
     transition: background-color 1000ms linear;
     font-family: 'Montserrat', sans-serif;
+
+    background-image: url(./assets/fundoteset.jpeg);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    transition: background-image .8s  ease-in-out;
+
     }
 
     @font-face {
@@ -127,7 +133,6 @@ temaRagnarok.addEventListener('click', () => {
      }
      
     .divImg{
-
         margin-top: 5%;
         
     }
@@ -139,7 +144,7 @@ temaRagnarok.addEventListener('click', () => {
      .imgKratos:hover{
         transform: scale(1.015);
         transition: .3s;
-        filter: drop-shadow(0px 0px 2px #656565);
+        filter: drop-shadow(0px 0px 2px #000000) saturate(1.5);
         
      }
 

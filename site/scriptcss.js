@@ -16,6 +16,7 @@ temaRagnarok.addEventListener('click', () => {
     background-image: url(./assets/fundoteset.jpeg);
     background-repeat: no-repeat;
     background-attachment: fixed;
+    background-size: cover;
     transition: background-image .8s  ease-in-out;
 
     }
@@ -99,19 +100,7 @@ temaRagnarok.addEventListener('click', () => {
        color: black;
        transition: .2s;
     }
-     .menu{
-        cursor: pointer;
-     }
-    
-     .menu .bar{
-        display: block;
-        width: 28px;
-        height: 3px;
-        border-radius: 3px;
-        background-color: black;
-        margin: 5px auto;
-     }
-    
+   
      .principal-section{
         display: flex;
         justify-content: space-evenly;
@@ -137,7 +126,7 @@ temaRagnarok.addEventListener('click', () => {
         
     }
      .imgKratos{
-        width: 400px;   
+        width: 80%;   
         transition: 1000ms;
      }
     
@@ -752,11 +741,7 @@ temaRagnarok.addEventListener('click', () => {
             <br> <span class="spanTextoRagnarok" style="color: rgb(87,124,178);">Ragnarok </span></span>
             <span></span>
         </ul>
-        <div class="menu">
-            <span class="bar"></span>
-            <span class="bar"></span>
-            <span class="bar"></span>
-        </div>
+      
     </nav>
 </header>
 <main>

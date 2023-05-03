@@ -24,20 +24,21 @@ body{
 
 /* NAVBAR */
 
-header{
-    display: flex;
-    justify-content: center;
-}
- .navigation{
+.navigation{
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 18px 40px;
     width: 100%;
-    border-bottom: 1px solid #656565;
-    position: relative;
-    
+    border-bottom: 2px solid #656565;
+    z-index: 1;
+    background-color: #000000a4;
+    border-radius: 5px;
+   position: relative;
  }
+
+
+  
 
 
  .spaceBetween{
@@ -111,7 +112,6 @@ header{
 .btnEntrar a{
    text-decoration: none;
 }
-
 /* NAVBAR */
 
 
@@ -138,6 +138,11 @@ header{
     display: flex;
     justify-content: space-around;
     align-items: center;
+    background-image: url(assets/kratosopacocolorido.png) ;
+    background-size: cover;
+    background-repeat: no-repeat;
+    
+    
 }
 
 
@@ -149,15 +154,6 @@ header{
     align-items: center;
     height: 80vh;
     width: 45%; 
-    background-image: url(assets/kratosopacocolorido.png) ;
-    background-size: cover;
-    background-repeat: no-repeat;
-    filter: grayscale(.6);
-    margin-left: 10px;
-    margin-right: 10px;
-    margin-top: 20px;
-    margin-bottom: 20px;
-    border-radius: 10px;
     
 }
 
@@ -315,6 +311,7 @@ align-items: center;
     letter-spacing: 2px;
     height: 50px;    
     cursor: pointer;
+    margin-bottom: 10px;
 }
 
 .divBtn button:hover{
@@ -328,6 +325,13 @@ align-items: center;
 
     
    
+}
+
+.msgCadastrar{
+    font-size: 18px;
+    font-weight: 600;
+    text-decoration: underline;
+    cursor: pointer;
 }
 
 

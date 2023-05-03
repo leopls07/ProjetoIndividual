@@ -23,35 +23,36 @@ rgb(155,155,155);
 */
 body{
     font-family: 'Montserrat', sans-serif;
-    background-color: black;
-    transition: linear 2s;
-    background-image: url(./assets/bglvermelho.png);
-    background-size: cover;
-    background-repeat: no-repeat;
+    background-color: rgb(0, 0, 0);
+    height: 100%;
     transition: background-image .8s ease-in-out;   
 }
 
-/* .background{
-   position: absolute;
-   width:100vw;
-   height: 100vh;
-} */
 
 
-header{
-    display: flex;
-    justify-content: center;
+main{
+   background-image: url(./assets/kratosopaco.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    transition: linear 2s;
+   
 }
+
  .navigation{
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 18px 40px;
     width: 100%;
-    border-bottom: 1px solid #656565;
-    position: relative;
-    
+    border-bottom: 2px solid #656565;
+    z-index: 1;
+    background-color: #000000a4;
+    border-radius: 5px;
+   position: relative;
  }
+
+
+  
 
 
  .spaceBetween{
@@ -137,12 +138,12 @@ header{
     align-items: center;
     height: fit-content;
     color: white;
-    position: relative;
+  
+    
  }
 
  .principal-text{
- height: 100%;
- width: 500px;
+ width: 30%;
  }
 
  .principal-title{
@@ -159,7 +160,8 @@ header{
 }
  .imgKratos{
     width: 80%;
-    transition: 1000ms;   
+    transition: 1000ms;
+    z-index: 0;   
  }
 
  .imgKratos:hover{

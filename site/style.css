@@ -30,12 +30,10 @@ body{
 
 
 
-main{
-   background-image: url(./assets/kratosopaco.png);
-    background-size: cover;
-    background-repeat: no-repeat;
-    transition: linear 2s;
-   
+header{
+   position: fixed;
+   width: 100vw;
+   z-index: 1;
 }
 
  .navigation{
@@ -45,11 +43,13 @@ main{
     padding: 18px 40px;
     width: 100%;
     border-bottom: 2px solid #656565;
+    background-color: #000000cb;
     z-index: 1;
-    background-color: #000000a4;
     border-radius: 5px;
-   position: relative;
+    position: relative;
  }
+
+ 
 
 
   
@@ -112,23 +112,33 @@ main{
 .btnEntrar a{
    font-family: 'Montserrat',sans-serif;
    font-size: 24px;
-   color:rgb(187, 23, 25);
-   font-weight: 600;
+   color:rgb(255, 255, 255);
+   font-weight: 400;
+   border: 2px solid #fff;
+   padding: 10px 20px ;
+   text-decoration: none;
+   border-radius: 5px ;
+   letter-spacing: 2px;
+   
 }
 
 .btnEntrar a:hover{
+   background-color: white;
+   color: black;
    transform: scale(1.05);
    transition: .2s;
    cursor: pointer;
    filter: saturate(1.5);
-}
-
-.btnEntrar a{
-   text-decoration: none;
+   
 }
 
 
 
+
+main{
+   display: flex;
+   flex-direction: column;
+}
 
 
  .principal-section{
@@ -138,16 +148,23 @@ main{
     align-items: center;
     height: fit-content;
     color: white;
-  
-    
+    background-image: url(./assets/kratosopaco.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    transition: linear 2s;
+    position: relative;
+      
  }
 
  .principal-text{
- width: 30%;
+ width: 35%;
+ font-size: 20px;
  }
 
  .principal-title{
     color: white;
+    font-size: 30px;
+    width: 33ch;
  }
 
 .divImg{
@@ -167,9 +184,46 @@ main{
  .imgKratos:hover{
     transform: scale(1.015);
     transition: .3s;
-    filter: drop-shadow(0px 0px 2px #ffffffc4) saturate(1.5);
+    filter: drop-shadow(0px 0px 2px #ffffffc4) saturate(2);
    
     
+ }
+
+
+.sobre-section{
+height: 80svh;
+
+
+}
+
+
+
+.sobre-container{
+   display: flex;
+   height: 100%;
+   padding: 40px 200px 40px 0px;
+   justify-content: space-between;
+   width: fit-content;
+}
+
+
+ .sobre-container img{
+   width: 50%;
+   height: 90%;
+   aspect-ratio: 1;
+    transform: scaleX(-1);
+    filter: saturate(1.5);
+
+ }
+
+
+
+ .sobre-text{
+   align-self: center ;   
+   text-align: justify ;
+   color: white;
+   max-width: 60ch;
+   font-size: 20px;
  }
 
  

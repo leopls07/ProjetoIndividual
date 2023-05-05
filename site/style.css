@@ -12,7 +12,7 @@
     box-sizing: border-box;
     text-decoration: none;
     list-style: none;
-  
+   scroll-behavior: smooth;
     
 }
 
@@ -36,100 +36,113 @@ header{
    z-index: 1;
 }
 
- .navigation{
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 18px 40px;
-    width: 100%;
-    border-bottom: 2px solid #656565;
-    background-color: #000000cb;
-    z-index: 1;
-    border-radius: 5px;
-    position: relative;
- }
+.navigation{
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+   padding: 18px 40px;
+   width: 100%;
+   border-bottom: 2px solid #656565;
+   z-index: 1;
+   background-color: #000000dc;
+   border-radius: 5px;
+  position: relative;
+}
 
- 
-
-
+.navigation a{
+   width: 20ch;
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+   width: 180px;
   
+}
+
+.spanLegacy{
+font-family: 'godofwar';  
+font-size: 26px;
+}
+   
 
 
- .spaceBetween{
-   width: 170px;
- }
  
 
 
+.spaceBetween{
+  width: 170px;
+}
 
- 
+
+
+
+
 .spanHome{
-    font-family: 'godofwar';  
-    width: 170px; 
-    font-size: 26px;
-    color: rgb(255, 255, 255);
-
- }
-
- .spanRagnarok{
-   font-family: 'godofwar';   
-   font-size: 20px;
+   font-family: 'godofwar';  
+   font-size: 26px;
    color: rgb(255, 255, 255);
-   cursor: pointer;
+
+}
+
+.spanRagnarok{
+  font-family: 'godofwar';   
+  font-size: 20px;
+  color: rgb(255, 255, 255);
+  cursor: pointer;
 
 }
 
 .spanTextoRagnarok{
-   margin-left: 10%;
+  margin-left: 10%;
 }
 
 .spanRagnarok:hover{
- transform: scale(1.05);
- transition: .3s;
+transform: scale(1.05);
+transition: .3s;
 }
 
- .navigation ul{
-    display: flex;
-    justify-content: center;
-    gap: 5rem;
-    align-items: center;
-    color: rgb(155,155,155);
-    font-size: 16px;
- }
-
- .navigation ul li a{
-    color: rgb(155,155,155);
-    font-size: 20px;
- }
-
- .navigation ul li a:hover{
-   color: white;
-   transition: .2s;
+.navigation ul{
+   display: flex;
+   justify-content: center;
+   gap: 5rem;
+   align-items: center;
+   color: rgb(155,155,155);
+   font-size: 16px;
 }
+
+.navigation ul li a{
+   color: rgb(155,155,155);
+   font-size: 20px;
+}
+
+.navigation ul li a:hover{
+  color: white;
+  transition: .2s;
+}
+
 
 
 
 .btnEntrar a{
    font-family: 'Montserrat',sans-serif;
    font-size: 24px;
-   color:rgb(255, 255, 255);
+   color:rgb(0, 0, 0);
    font-weight: 400;
    border: 2px solid #fff;
    padding: 10px 20px ;
    text-decoration: none;
    border-radius: 5px ;
    letter-spacing: 2px;
+   background-color: white;
    
 }
 
 .btnEntrar a:hover{
-   background-color: white;
-   color: black;
+   background-color: black;
+   color: rgb(255, 255, 255);
    transform: scale(1.05);
    transition: .2s;
    cursor: pointer;
-   filter: saturate(1.5);
-   
 }
 
 
@@ -151,7 +164,6 @@ main{
     background-image: url(./assets/kratosopaco.png);
     background-size: cover;
     background-repeat: no-repeat;
-    transition: linear 2s;
     position: relative;
       
  }
@@ -192,7 +204,9 @@ main{
 
 .sobre-section{
 height: 80svh;
-
+background-image: url(assets/fundosobre.png);
+background-size: cover;
+background-position: center;
 
 }
 

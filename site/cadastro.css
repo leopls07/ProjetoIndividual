@@ -28,12 +28,10 @@ body{
 /* NAVBAR */
 
 .navigation{
-    padding: 18px 40px;
     width: 100%;
- 
+    padding: 18px 40px;
+
  }
-
-
 
  .navigation a{
     width: 20ch;
@@ -45,100 +43,22 @@ body{
  }
 
  .spanLegacy{
+
 font-family: 'godofwar';  
 font-size: 26px;
  }
-    
 
- 
+
 .spanHome{
     font-family: 'godofwar';  
-    
     font-size: 26px;
     color: rgb(255, 255, 255);
 
  }
 
- .spanRagnarok{
-   font-family: 'godofwar';   
-   font-size: 20px;
-   color: rgb(255, 255, 255);
-   cursor: pointer;
-
-}
-
-.spanTextoRagnarok{
-   margin-left: 10%;
-}
-
-.spanRagnarok:hover{
- transform: scale(1.05);
- transition: .3s;
-}
-
- .navigation ul{
-    display: flex;
-    justify-content: center;
-    gap: 5rem;
-    align-items: center;
-    color: rgb(155,155,155);
-    font-size: 16px;
- }
-
- .navigation ul li a{
-    color: rgb(155,155,155);
-    font-size: 20px;
- }
-
- .navigation ul li a:hover{
-   color: white;
-   transition: .2s;
-}
-
-
-
-
-.btnEntrar a{
-    font-family: 'Montserrat',sans-serif;
-    font-size: 24px;
-    color:rgb(0, 0, 0);
-    font-weight: 400;
-    border: 2px solid #fff;
-    padding: 10px 20px ;
-    text-decoration: none;
-    border-radius: 5px ;
-    letter-spacing: 2px;
-    background-color: white;
-    
- }
  
- .btnEntrar a:hover{
-    background-color: black;
-    color: rgb(255, 255, 255);
-    transform: scale(1.05);
-    transition: .2s;
-    cursor: pointer;
- }
- 
- 
-/* NAVBAR */
 
 
-/* CENTRO */
-
-
-.linha{
-    width: 5px;
-    height: 85vh;
-   background-color: white;
-  border-radius: 5px;
-}
-
-.centralizarLinha{
-    display: flex;
-    height: 90vh;
-    align-items: center;
-}
 
 /* CENTRO */
 

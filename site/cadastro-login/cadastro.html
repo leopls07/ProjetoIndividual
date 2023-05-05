@@ -11,7 +11,7 @@
 <body>
     
         <nav class="navigation">
-          <a href="index.html" class="logo">
+          <a href="../home-page/index.html" class="logo">
             <span class="spanHome">God <span style="color: rgb(221, 36, 36)">Of</span> War   </span> 
              <span class="spanLegacy" style="color: #FFD700;">Legacy</span> 
           </a>
@@ -49,39 +49,41 @@
     
             <div class="divInputs">
     
-    
+              <span id="cadastro_erro" class="spanErro"></span>
               <div class="group">
-                <input required="" type="text" class="input">
+                <input id="ipt_cadastro_usuario" required="" type="text" class="input">
                 <span class="highlight"></span>
                 <span class="bar"></span>
                 <label>Usuário</label>
               </div>
 
               <div class="group">
-                <input required="" type="text" class="input">
+                <input id="ipt_cadastro_email" required="" type="text" class="input">
                 <span class="highlight"></span>
                 <span class="bar"></span>
                 <label>Email</label>
               </div>
     
               <div class="group">
-                <input required="" type="text" class="input">
+                <input id="ipt_cadastro_senha" required="" type="text" class="input">
                 <span class="highlight"></span>
                 <span class="bar"></span>
                 <label>Senha</label>
               </div>
 
               <div class="group">
-                <input required="" type="text" class="input">
+                <input id="ipt_cadastro_senha_conf" required="" type="text" class="input">
                 <span class="highlight"></span>
                 <span class="bar"></span>
                 <label>Confirmar Senha</label>
               </div>
 
             </div>
-            <div class="divBtn"> <button>CADASTRAR</button></div>
-           
-    
+            <div class="divBtn"> <button id="btn_cadastro">CADASTRAR</button></div>
+            <h2 class="msgCadastrar">
+              <a class="anchorCadastro" href="login.html">Voltar para login</a>
+            </h2>
+            
           </div>
     
     
@@ -91,3 +93,6 @@
       </main>
 </body>
 </html>
+
+
+<script src="script-cadastro.js"></script>

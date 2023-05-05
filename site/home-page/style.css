@@ -1,6 +1,6 @@
 @font-face {
     font-family: "godofwar";
-    src: url(assets/GODOFWAR.TTF);
+    src: url(../assets/GODOFWAR.TTF);
  }
 
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;1,300;1,400&display=swap');
@@ -161,7 +161,7 @@ main{
     align-items: center;
     height: fit-content;
     color: white;
-    background-image: url(./assets/kratosopaco.png);
+    background-image: url(../assets/kratosopaco.png);
     background-size: cover;
     background-repeat: no-repeat;
     position: relative;
@@ -204,9 +204,10 @@ main{
 
 .sobre-section{
 height: 80svh;
-background-image: url(assets/fundosobre.png);
+background-image: url(../assets/gowfundoSobreVM.png);
 background-size: cover;
 background-position: center;
+filter: grayscale(1);
 
 }
 
@@ -215,9 +216,9 @@ background-position: center;
 .sobre-container{
    display: flex;
    height: 100%;
-   padding: 40px 200px 40px 0px;
-   justify-content: space-between;
-   width: fit-content;
+   padding: 0px 100px 10px 0px;
+   justify-content: end;
+   
 }
 
 

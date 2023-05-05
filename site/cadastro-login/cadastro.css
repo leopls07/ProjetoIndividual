@@ -1,6 +1,6 @@
 @font-face {
     font-family: "godofwar";
-    src: url(assets/GODOFWAR.TTF);
+    src: url(../assets/GODOFWAR.TTF);
  }
 
 
@@ -43,7 +43,6 @@ body{
  }
 
  .spanLegacy{
-
 font-family: 'godofwar';  
 font-size: 26px;
  }
@@ -124,6 +123,16 @@ margin-right: 10px;
    width: 100%;
    
    }
+
+   .spanErro{
+    font-size: 16px;
+    color: rgb(255, 0, 0);
+    font-weight: 600;
+    transition: .5s;
+    opacity: 0;
+}
+
+
    
    .input {
     margin-top: 10px;
@@ -278,7 +287,7 @@ align-items: center;
 filter: saturate(2);
     height: 85vh;
     width: 50%;
-    background-image: url(assets/imggowragnarok.jpg);
+    background-image: url(../assets/imggowragnarok.jpg);
     background-position: center;
    background-size: cover;
     margin: 20px 0px 20px 20px;

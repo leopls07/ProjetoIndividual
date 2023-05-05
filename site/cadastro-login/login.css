@@ -1,6 +1,6 @@
 @font-face {
     font-family: "godofwar";
-    src: url(assets/GODOFWAR.TTF);
+    src: url(../assets/GODOFWAR.TTF);
  }
 
 
@@ -58,44 +58,6 @@ font-size: 26px;
     color: rgb(255, 255, 255);
 
  }
-
- .spanRagnarok{
-   font-family: 'godofwar';   
-   font-size: 20px;
-   color: rgb(255, 255, 255);
-   cursor: pointer;
-
-}
-
-.spanTextoRagnarok{
-   margin-left: 10%;
-}
-
-.spanRagnarok:hover{
- transform: scale(1.05);
- transition: .3s;
-}
-
- .navigation ul{
-    display: flex;
-    justify-content: center;
-    gap: 5rem;
-    align-items: center;
-    color: rgb(155,155,155);
-    font-size: 16px;
- }
-
- .navigation ul li a{
-    color: rgb(155,155,155);
-    font-size: 20px;
- }
-
- .navigation ul li a:hover{
-   color: white;
-   transition: .2s;
-}
-
-
 
 
 .btnEntrar a{
@@ -205,7 +167,18 @@ margin-right: 10px;
    
    }
    
+.spanErro{
+    font-size: 16px;
+    color: rgb(255, 0, 0);
+    font-weight: 600;
+    
+    transition: .5s;
+    opacity: 0;
+}
+
+
    .input {
+    
     margin-top: 10px;
     font-size: 16px;
     padding: 10px 10px 10px 5px;
@@ -358,12 +331,23 @@ align-items: center;
 filter: saturate(2);
     height: 85vh;
     width: 50%;
-    background-image: url(assets/imggowragnarok.jpg);
+    background-image: url(../assets/imggowragnarok.jpg);
     background-position: center;
    background-size: cover;
     margin: 20px 0px 20px 20px;
     border-radius: 10px;
 }
+
+
+
+
+
+
+
+
+
+
+
 
 
 

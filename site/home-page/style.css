@@ -6,6 +6,31 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;1,300;1,400&display=swap');
 
 
+ @font-face {
+   font-family: 'clashM';
+   src: url(../assets/Fonts/OTF/ClashGrotesk-Medium.otf);
+ } 
+ @font-face {
+   font-family: 'clashEL';
+   src: url(../assets/Fonts/OTF/ClashGrotesk-Extralight.otf);
+ } 
+
+ @font-face {
+   font-family: 'clashL';
+   src: url(../assets/Fonts/OTF/ClashGrotesk-Light.otf);
+ } 
+
+ @font-face {
+   font-family: 'clashR';
+   src: url(../assets/Fonts/OTF/ClashGrotesk-Regular.otf);
+ } 
+
+ @font-face {
+   font-family: 'clashB';
+   src: url(../assets/Fonts/OTF/ClashGrotesk-Bold.otf);
+ } 
+
+
 *{
     margin: 0;
     padding: 0;
@@ -22,7 +47,7 @@ rgb(155,155,155);
 
 */
 body{
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'clashR', sans-serif;
     background-color: rgb(0, 0, 0);
     height: 100%;
     transition: background-image .8s ease-in-out;   
@@ -66,6 +91,9 @@ font-size: 26px;
    
 
 
+.logo{
+   width: 170px;
+}
  
 
 
@@ -81,6 +109,7 @@ font-size: 26px;
    font-family: 'godofwar';  
    font-size: 26px;
    color: rgb(255, 255, 255);
+   width: 10ch;
 
 }
 
@@ -89,6 +118,7 @@ font-size: 26px;
   font-size: 20px;
   color: rgb(255, 255, 255);
   cursor: pointer;
+  width: 10ch;
 
 }
 
@@ -104,7 +134,7 @@ transition: .3s;
 .navigation ul{
    display: flex;
    justify-content: center;
-   gap: 5rem;
+   gap: 2.5rem;
    align-items: center;
    color: rgb(155,155,155);
    font-size: 16px;
@@ -112,7 +142,7 @@ transition: .3s;
 
 .navigation ul li a{
    color: rgb(155,155,155);
-   font-size: 20px;
+   font-size: 22px;
 }
 
 .navigation ul li a:hover{
@@ -134,6 +164,7 @@ transition: .3s;
    border-radius: 5px ;
    letter-spacing: 2px;
    background-color: white;
+   margin-left: 20px;
    
 }
 
@@ -161,6 +192,7 @@ main{
     align-items: center;
     height: fit-content;
     color: white;
+    
     background-image: url(../assets/kratosopaco.png);
     background-size: cover;
     background-repeat: no-repeat;
@@ -169,8 +201,11 @@ main{
  }
 
  .principal-text{
- width: 35%;
+ width: 45ch;
  font-size: 20px;
+ text-align: justify;
+
+ 
  }
 
  .principal-title{
@@ -190,15 +225,14 @@ main{
  .imgKratos{
     width: 80%;
     transition: 1000ms;
-    z-index: 0;   
+    z-index: 0; 
+      
  }
 
  .imgKratos:hover{
     transform: scale(1.015);
     transition: .3s;
     filter: drop-shadow(0px 0px 2px #ffffffc4) saturate(2);
-   
-    
  }
 
 

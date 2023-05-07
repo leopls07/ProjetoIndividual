@@ -328,12 +328,12 @@ align-items: center;
 /* SECTION IMAGEM OU SLA */
 
 .containerImagem{
-filter: saturate(2);
+filter: saturate(1.5);
     height: 85vh;
     width: 50%;
     background-image: url(../assets/imggowragnarok.jpg);
     background-position: center;
-   background-size: cover;
+    background-size: cover;
     margin: 20px 0px 20px 20px;
     border-radius: 10px;
 }

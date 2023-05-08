@@ -1,0 +1,38 @@
+@font-face {
+    font-family: "godofwar";
+    src: url(../Fonts/GODOFWAR.TTF);
+ }
+
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,800&display=swap');
+
+
+ @font-face {
+   font-family: 'clashM';
+   src: url(../Fonts/clashFont/OTF/ClashGrotesk-Medium.otf);
+ } 
+ @font-face {
+   font-family: 'clashEL';
+   src: url(../Fonts/clashFont/OTF/ClashGrotesk-Extralight.otf);
+ } 
+
+ @font-face {
+   font-family: 'clashL';
+   src: url(../Fonts/clashFont/OTF/ClashGrotesk-Light.otf);
+ } 
+
+ @font-face {
+   font-family: 'clashR';
+   src: url(../Fonts/clashFont/OTF/ClashGrotesk-Regular.otf);
+ } 
+
+ @font-face {
+   font-family: 'clashB';
+   src: url(../Fonts/clashFont/OTF/ClashGrotesk-Bold.otf);
+ } 
+
+ @font-face {
+    font-family: 'clashSB';
+    src: url(../Fonts/clashFont/OTF/ClashGrotesk-Semibold.otf);
+  } 
+

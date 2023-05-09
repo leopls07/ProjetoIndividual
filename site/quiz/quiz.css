@@ -20,17 +20,28 @@ body{
 }
 
 .quiz-form{
-    width: 80%;
+    width: 50%;
+   
     background-color: white;
     border-radius: 10px;
     padding: 30px;
 }
 
+.quiz{
+    padding: 20px 0;
+}
+
 .quiz-form h1{
     border-bottom: 1px solid black;
   padding-bottom: 20px;
+  font-size: 25px;
 }
 
+.quiz h2{
+    font-size: 20px;
+    font-weight: 500;
+   
+}
 
 
 
@@ -38,5 +49,43 @@ body{
 .respostas{
     display: flex;
     flex-direction: column;
+}
+
+.btn-resposta {
+    background: white ;
+    font-size: 18px;
+    color: #222;
+    width: 100%;
+    border: 1px solid #000;
+    border-radius: 5px;
+    padding: 10px;
+    margin: 10px 0;
+    text-align: left;
+    cursor: pointer;
+    transition: all .3s;
+}
+
+.div-btn-proximo{
+    padding: 25px;
+    width: 100%;
+    height: fit-content;
+    display: flex;
+    justify-content: center;
+}
+
+.btn-resposta:hover{
+    background-color: #222;
+    color: white;
+}
+
+
+.btn-proximo{
+    color: white;
+    background-color: rgb(0, 0, 0);
+    padding: 12px 45px ;
+    border: none;
+    border-radius: 5px;
+    font-size: 22px;
+    display: none;
 }
 

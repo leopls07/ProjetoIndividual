@@ -57,7 +57,7 @@ font-size: 26px;
 
 .main{
     display: flex;
-    align-items: center;
+    align-items: start;
    
     background-size: cover;
     background-repeat: no-repeat;
@@ -85,7 +85,7 @@ width: 90%;
 height: 100%;
 background-color: #e8e8e8;
 border-radius: 10px;
-padding: 80px 120px 120px 120px;
+padding: 60px 120px 120px 120px;
 color: rgb(0, 0, 0);
 margin-right: 10px;
 }
@@ -95,7 +95,7 @@ margin-right: 10px;
 
 .tituloLogin{
     text-align: start;
-    margin-top: 30px;
+    margin-top: 20px;
     font-size: 28px;
     font-weight: 700;
 }
@@ -103,7 +103,7 @@ margin-right: 10px;
 .divInputs{
     display: flex;
     flex-direction: column;
-    gap: 30px;
+    gap: 25px;
     width: 100%;
     margin-top: 30px;
     align-items: center;
@@ -223,7 +223,6 @@ margin-right: 10px;
 
 
 .divBtn{
-margin-top: 30px;
 width: 100%;
 display: flex;
 align-items: center;

@@ -61,36 +61,64 @@ function comecarQuiz(){
 }
 
 function mostrarPergunta(){
-
     resetarQuestoesAnteriores()
 
     let questaoAtual = perguntasRagnarok[questaoAtualPosicao]
     let questaoNumero = questaoAtualPosicao + 1
     perguntaH2.innerHTML = questaoNumero + ' - ' + questaoAtual.pergunta
 
+    for (let i = 0; i < questaoAtual.alternativas.length; i++) {
+        const alternativa = questaoAtual.alternativas[i];
 
-    questaoAtual.alternativas.forEach(alternativa => {
-        const button = document.createElement("button")
-        button.innerHTML = alternativa.resposta
-        button.classList.add("btn-resposta")
-        respostasDiv.appendChild(button)
+            const button = document.createElement("button")
+            button.innerHTML = alternativa.resposta
+            button.classList.add("btn-resposta")
+            respostasDiv.appendChild(button)
+    
+            if(alternativa.correta){
+                button.dataset.correct = alternativa.correta
+            }
+            button.addEventListener('click' , selecionarResposta)
+    
+    }
 
-        if(alternativa.correta){
-            button.dataset.corret = alternativa.correta
-        }
-        button.addEventListener('click' , selecionarResposta)
-
-    } )
-
+ 
 }
 
 function resetarQuestoesAnteriores(){
- proximoBtn.style.diplay = "none"
+  
+    proximoBtn.style.opacity = "0"
+    proximoBtn.style.display = "none"
  while(respostasDiv.firstChild){
     respostasDiv.removeChild(respostasDiv.firstChild)
  }
 }
 
-function selecionarResposta(){}
+function selecionarResposta(e){
+    const botaoSelecionado =  e.target
+    const isCorrect = botaoSelecionado.dataset.correct === "true"
+
+    if(isCorrect){
+        botaoSelecionado.classList.add("correta")
+    }else{
+        botaoSelecionado.classList.add("incorreta")
+    }
+
+    Array.from(respostasDiv.children).forEach(button => {
+        if(button.dataset.correct === "true"){
+            button.classList.add("correta")
+        }
+        button.disabled = true
+    })
+    proximoBtn.style.opacity = "1"
+    proximoBtn.style.display = "block"
+    
+}
+
+proximoBtn.addEventListener('click' , ()=> {
+    if(questaoAtualPosicao < perguntasRagnarok.length){
+        
+    }
+})
 
 comecarQuiz();

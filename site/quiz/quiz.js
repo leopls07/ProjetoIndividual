@@ -47,6 +47,8 @@ const perguntasRagnarok = [
 const perguntaH2 = document.querySelector('#pergunta')
 const respostasDiv = document.querySelector('#respostas')
 const proximoBtn = document.querySelector('#btn-proximo')
+const questaoAtualElement = document.querySelector('#questaoAtual')
+const quizFormElement = document.querySelector('#quiz-form')
 
 
 let questaoAtualPosicao = 0
@@ -54,6 +56,7 @@ let pontuacao = 0
 
 
 function comecarQuiz(){
+    questaoAtualPosicao = 0
     questaoAtual = 0
     pontuacao = 0
     proximoBtn.innerHTML = 'Próximo'
@@ -61,33 +64,38 @@ function comecarQuiz(){
 }
 
 function mostrarPergunta(){
+    setTimeout(()=>{
+        quizFormElement.style.opacity = '1'
+    },200)
+    
+    
+
     resetarQuestoesAnteriores()
 
     let questaoAtual = perguntasRagnarok[questaoAtualPosicao]
     let questaoNumero = questaoAtualPosicao + 1
     perguntaH2.innerHTML = questaoNumero + ' - ' + questaoAtual.pergunta
 
-    for (let i = 0; i < questaoAtual.alternativas.length; i++) {
-        const alternativa = questaoAtual.alternativas[i];
-
+  
+        questaoAtual.alternativas.forEach(alternativa => {
             const button = document.createElement("button")
             button.innerHTML = alternativa.resposta
             button.classList.add("btn-resposta")
             respostasDiv.appendChild(button)
-    
+
             if(alternativa.correta){
                 button.dataset.correct = alternativa.correta
             }
-            button.addEventListener('click' , selecionarResposta)
+            button.addEventListener('click' , selecionarResposta)   
+        })
     
-    }
+        questaoAtualElement.innerHTML = `${questaoAtualPosicao + 1}/${perguntasRagnarok.length}`
 
  
 }
 
 function resetarQuestoesAnteriores(){
-  
-    proximoBtn.style.opacity = "0"
+   
     proximoBtn.style.display = "none"
  while(respostasDiv.firstChild){
     respostasDiv.removeChild(respostasDiv.firstChild)
@@ -100,9 +108,11 @@ function selecionarResposta(e){
 
     if(isCorrect){
         botaoSelecionado.classList.add("correta")
+        pontuacao++
     }else{
         botaoSelecionado.classList.add("incorreta")
     }
+    
 
     Array.from(respostasDiv.children).forEach(button => {
         if(button.dataset.correct === "true"){
@@ -115,9 +125,35 @@ function selecionarResposta(e){
     
 }
 
+function mostrarPontuacao(){
+    resetarQuestoesAnteriores()
+    perguntaH2.innerHTML = `Resultado: ${pontuacao}/${perguntasRagnarok.length} `
+    proximoBtn.innerHTML = `Jogar Novamente`
+    proximoBtn.style.opacity = "1"
+    proximoBtn.style.display = "block"
+    questaoAtualElement.innerHTML =''
+   
+
+
+}
+
+function handleNextButton(){
+    questaoAtualPosicao++
+    if(questaoAtualPosicao < perguntasRagnarok.length){
+    quizFormElement.style.opacity = '0' 
+    mostrarPergunta()
+        
+    }else{
+        mostrarPontuacao()
+    }
+}
+
+
 proximoBtn.addEventListener('click' , ()=> {
     if(questaoAtualPosicao < perguntasRagnarok.length){
-        
+        handleNextButton()
+    }else{
+        comecarQuiz()
     }
 })
 

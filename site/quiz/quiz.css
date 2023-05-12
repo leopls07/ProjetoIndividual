@@ -17,18 +17,30 @@ body{
     align-items: center;
     height: 100vh;
     width: 100vw;
+    
 }
 
 .quiz-form{
-    width: 50%;
-   
+    width: 50%; 
     background-color: white;
     border-radius: 10px;
     padding: 30px;
+    transition: .2s;
+    opacity:0;
+    
 }
 
 .quiz{
     padding: 20px 0;
+}
+
+.upper-question{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    padding: 0 20px 0 0;
+    flex-direction: row;
+    align-items: center;
 }
 
 .quiz-form h1{
@@ -88,6 +100,7 @@ body{
     font-size: 22px;
     opacity: 0;
     transition: .5s;
+    cursor: pointer;
     display: none;
 }
 

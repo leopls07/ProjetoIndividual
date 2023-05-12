@@ -494,6 +494,7 @@ filter: grayscale(1);
    color: black;
  }
  .card-back-content-ragnarok h1{
+   font-family: 'godofwar';
        margin-bottom: 40px;
  }
 
@@ -514,6 +515,7 @@ filter: grayscale(1);
   background-color: #2a58bb;
   border: 1px solid rgb(183, 208, 255);
   cursor: pointer;
+  transition: .1s;
  }
 
  .card-back-content-ragnarok button:hover{
@@ -527,9 +529,15 @@ filter: grayscale(1);
  
 
  /* BACKSIDE 2018*/
+
+.style-back-2018{
+   background: rgb(117,0,0);
+background: linear-gradient(180deg, rgba(117,0,0,1) 5%, rgba(255,4,14,1) 48%, rgba(117,0,0,1) 92%);
+}
+
   .card-back-content-2018{
    padding: 30px;
-   color: black;
+   color: rgb(255, 255, 255);
  }
  .card-back-content-2018 h1{
        margin-bottom: 40px;
@@ -549,18 +557,25 @@ filter: grayscale(1);
   padding: 8px 35px;
   border-radius: 10px;
   color: white;
-  background-color: #2a58bb;
-  border: 1px solid rgb(183, 208, 255);
+  background-color: rgb(12, 12, 12);
+  border: none;
   cursor: pointer;
+  transition: .1s;
  }
 
  .card-back-content-2018 button:hover{
-   background-color: #204494;
+   background-color: rgb(23, 22, 22);
  }
  /*BACKSIDE 2018*/
  
 
  /* BACKSIDE GOW3 */
+
+ .style-back-gow3{
+   background: rgb(117,0,0);
+   background: linear-gradient(180deg, rgba(117,0,0,1) 5%, rgba(255,4,14,1) 48%, rgba(117,0,0,1) 92%);
+}
+
  .card-back-content-gow3{
    padding: 30px;
    color: rgb(240, 240, 240);
@@ -583,13 +598,14 @@ filter: grayscale(1);
   padding: 8px 35px;
   border-radius: 10px;
   color: white;
-  background-color: #bb472a;
-  border: 1px solid rgb(183, 208, 255);
+  background-color: rgb(12, 12, 12);
+  border: none;
   cursor: pointer;
+  transition: .1s;
  }
 
  .card-back-content-gow3 button:hover{
-   background-color: #204494;
+   background-color: rgb(22, 22, 22);
  }
  /* BACKSIDE GOW3 */
  

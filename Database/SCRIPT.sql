@@ -61,4 +61,4 @@ insert into quiz values
 (null,'Quiz Gow 2',10),
 (null,'Quiz Gow 3',12),
 (null,'Quiz Gow 2018',14),
-(null,'Quiz Gow Ragnarok',14),
+(null,'Quiz Gow Ragnarok',14);

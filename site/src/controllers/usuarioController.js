@@ -43,6 +43,7 @@ function entrar(req, res) {
                     if (resultado.length == 1) {
                         console.log(resultado);
                         res.json(resultado[0]);
+                        res.redirect('../index.html')
                     } else if (resultado.length == 0) {
                         res.status(403).send("Email e/ou senha inválido(s)");
                     } else {

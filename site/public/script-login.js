@@ -42,7 +42,7 @@ login_erro.innerHTML = 'Senha Inválida'
 login_erro.style.opacity = '1' 
 }else{
     // TUDO VÁLIDO
-    alert('ok')
+   doLogin();
 }
 
 })
@@ -61,4 +61,40 @@ login_senha.addEventListener('focus', () =>{
 /* VALIDAÇÕES INPUT LOGIN */ 
 
 
+function doLogin(){
+    var email = login_email.value
+    var senha = login_senha.value
 
+   
+    fetch('/usuarios/autenticar',{
+        method:'POST', 
+        headers:{
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            emailServer: email,
+            senhaServer: senha
+        })
+    }).then((resposta) => {
+        console.log(resposta)
+
+        if(resposta.ok){
+            return resposta.json()
+        }else{
+            console.log("Houve um erro ao tentar realizar o login!");
+
+            resposta.text().then(texto => {
+                console.error(texto);
+                
+            });
+        
+        }
+    }).then((dados)=>{
+        sessionStorage.setItem('idUsuario', dados.idUsuario)
+        sessionStorage.setItem('username', dados.username)
+        sessionStorage.setItem('email', dados.email)
+    }).catch(function (erro) {
+        console.log(erro);
+    })
+    
+}

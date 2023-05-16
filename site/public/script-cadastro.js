@@ -79,11 +79,16 @@ fetch("/usuarios/cadastrar", {
         emailServer: emailVar,
         senhaServer: senhaVar,
     })
+    
 }).then(function (resposta) {
+  
 
     console.log("resposta: ", resposta);
+  
 
     if (resposta.ok) {
+            
+
        console.log('OK')
     } else {
         throw ("Houve um erro ao tentar realizar o cadastro!");
@@ -92,10 +97,16 @@ fetch("/usuarios/cadastrar", {
     console.log(`#ERRO: ${resposta}`);
 });
 
-return false;
+
+return irLogin();
 
 }
 
+function irLogin(){
+    setTimeout(() => {
+        window.location = "login.html";
+    }, "2000")
+}
 
 cadastro_email.addEventListener('focus', () => {
     cadastro_erro.innerHTML = ''

@@ -10,7 +10,8 @@ const numeros = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0]
 const sc = ['!', '@', '#', '%', '$', '&', '*', '-', '_']
 
 
-cadastro_btn.addEventListener('click', (e) => {
+cadastro_btn.addEventListener('click', () => {
+     
 
     const usuario = cadastro_usuario.value
     const email = cadastro_email.value
@@ -36,21 +37,22 @@ cadastro_btn.addEventListener('click', (e) => {
 
 
     if (usuario == '' || email == '' || senha == '' || senha_conf == '') {
-                                                                                                                                        
+        cadastro_erro.innerHTML = 'Preencha todos os campos'
+        cadastro_erro.style.opacity = '1';                                                                                                                            
     } else if (!email_validation) {
-        e.preventDefault()
+         
         cadastro_erro.innerHTML = 'Email Inválido'
         cadastro_erro.style.opacity = '1';
     } else if (!senha_validation) {
-        e.preventDefault()
+         
         cadastro_erro.innerHTML = 'Senha Inválida'
         cadastro_erro.style.opacity = '1'
     } else if (senha != senha_conf) {
-        e.preventDefault()
+         
         cadastro_erro.innerHTML = 'Senhas diferentes'
         cadastro_erro.style.opacity = '1'
     } else {
-       
+         
         efetuarCadastro()
 
 
@@ -82,31 +84,28 @@ fetch("/usuarios/cadastrar", {
     
 }).then(function (resposta) {
   
-
+    
     console.log("resposta: ", resposta);
-  
-
+    
     if (resposta.ok) {
-            
-
        console.log('OK')
+       return resposta.json()
     } else {
         throw ("Houve um erro ao tentar realizar o cadastro!");
     }
+    
+}).then(() => {
+    window.location.href = './login.html'
 }).catch(function (resposta) {
     console.log(`#ERRO: ${resposta}`);
 });
 
 
-return irLogin();
+
 
 }
 
-function irLogin(){
-    setTimeout(() => {
-        window.location = "login.html";
-    }, "2000")
-}
+
 
 cadastro_email.addEventListener('focus', () => {
     cadastro_erro.innerHTML = ''

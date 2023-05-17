@@ -93,6 +93,7 @@ function doLogin(){
         sessionStorage.setItem('idUsuario', dados.idUsuario)
         sessionStorage.setItem('username', dados.username)
         sessionStorage.setItem('email', dados.email)
+        window.location.href = '/index.html'
     }).catch(function (erro) {
         console.log(erro);
     })

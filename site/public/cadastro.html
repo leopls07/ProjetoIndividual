@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="cadastro.css" />
-    <link rel="stylesheet" href="../Fonts/fonts.css" />
+    <link rel="stylesheet" href="./Fonts/fonts.css" />
     <link
       rel="shortcut icon"
       href="../assets/logo_gold.ico"
@@ -16,16 +16,19 @@
 
   <body>
     <nav class="navigation">
+      <div class="aviso">
+        <p class="resposta-cadastro">Cadastro realizado com sucesso</p>
+      </div>
       <a href="index.html" class="logo">
         <span class="spanHome"
-          >God <span style="color: rgb(221, 36, 36)">Of</span> War
-        </span>
-        <span class="spanLegacy" style="color: #ffd700">Legacy</span>
-      </a>
-    </nav>
-
-    <main class="main">
-      
+        >God <span style="color: rgb(221, 36, 36)">Of</span> War
+      </span>
+      <span class="spanLegacy" style="color: #ffd700">Legacy</span>
+    </a>
+  </nav>
+  
+  <main class="main">
+    
       <div class="containerImagem">
         <div class="wrapper">
           <div id="stars"></div>
@@ -43,7 +46,7 @@
             <div class="group">
               <input
                 id="ipt_cadastro_usuario"
-                
+                maxlength="40"
                 type="text"
                 class="input"
                           />
@@ -55,7 +58,7 @@
             <div class="group">
               <input
                 id="ipt_cadastro_email"
-                
+                maxlength="100"
                 type="text"
                 class="input"
                           />
@@ -67,7 +70,7 @@
             <div class="group">
               <input
                 id="ipt_cadastro_senha"
-                
+                maxlength="100"
                 type="password"
                 class="input"
                           />
@@ -79,7 +82,7 @@
             <div class="group">
               <input
                 id="ipt_cadastro_senha_conf"
-                
+                maxlength="100"
                 type="password"
                 class="input"
                           />

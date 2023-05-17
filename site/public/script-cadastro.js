@@ -63,6 +63,8 @@ cadastro_btn.addEventListener('click', () => {
 
 
 function efetuarCadastro(){
+    const div_aviso = document.querySelector('.aviso')
+    const resposta_aviso = document.querySelector('.resposta-cadastro')
 
 var usuarioVar = cadastro_usuario.value 
 var emailVar = cadastro_email.value 
@@ -91,11 +93,30 @@ fetch("/usuarios/cadastrar", {
        console.log('OK')
        return resposta.json()
     } else {
+
+        div_aviso.style.opacity = '1'
+        resposta_aviso.style.color = 'red'
+        resposta_aviso.innerHTML = 'Houve um erro ao realizar o cadastro!'
+
+        setTimeout(()=>{
+            div_aviso.style.opacity = '0'
+        },5000)
+
         throw ("Houve um erro ao tentar realizar o cadastro!");
     }
     
 }).then(() => {
-    window.location.href = './login.html'
+
+    div_aviso.style.opacity = '1'
+    resposta_aviso.style.color = 'green'
+    resposta_aviso.innerHTML = 'Cadastro realizado com sucesso!'
+
+    
+
+   setTimeout(() =>{
+       window.location.href = './login.html'
+   },2500)
+
 }).catch(function (resposta) {
     console.log(`#ERRO: ${resposta}`);
 });

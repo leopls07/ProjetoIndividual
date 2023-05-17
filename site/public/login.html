@@ -12,6 +12,9 @@
 
   <body>
     <nav class="navigation">
+      <div class="aviso">
+        <p class="resposta-cadastro">Login realizado com sucesso</p>
+      </div>
       <a href="./home-page/index.html" class="logo">
         <span class="spanHome"
           >God <span style="color: rgb(221, 36, 36)">Of</span> War
@@ -35,14 +38,16 @@
           <div class="divInputs">
             <span id="login_erro" class="spanErro">pppppp</span>
             <div class="group">
-              <input required="" type="text" class="input" id="ipt_login_email"/>
+              <input required="" type="text" class="input" id="ipt_login_email"
+              maxlength="100"/>
               <span class="highlight"></span>
               <span class="bar"></span>
               <label>Email</label>
             </div>
 
             <div class="group">
-              <input required="" type="password" class="input" id="ipt_login_senha"/>
+              <input required="" type="password" class="input" id="ipt_login_senha"
+              maxlength="100"/>
               <span class="highlight"></span>
               <span class="bar"></span>
               <label>Senha</label>
@@ -59,5 +64,7 @@
     </main>
   </body>
 </html>
+
+<script src="../src/controllers/usuarioController.js"></script>
 
 <script src="script-login.js"></script>

@@ -185,10 +185,10 @@ const perguntasGow2018 = [
     {
         pergunta: 'O que é Midgard?',
         alternativas: [
-            { resposta: 'É o jogo do god of war', correta: false },
-            { resposta: 'É o inverno da mitologia nórdica', correta: false },
-            { resposta: 'É  o fim do mundo na mitologia nórdica', correta: true },
-            { resposta: 'É quando odin tenta matar kratos em uma batalha por conta de suas atitudes passadas', correta: false },
+            { resposta: ' O reino dos mortos na mitologia nórdica', correta: false },
+            { resposta: 'O mundo mortal habitado pelos seres humanos', correta: true },
+            { resposta: 'O lar dos deuses nórdicos', correta: false },
+            { resposta: 'A terra dos gigantes', correta: false }
 
         ]
     },
@@ -204,25 +204,81 @@ const perguntasGow2018 = [
         ]
     },
     {
-        pergunta: 'Pergunta genérica',
+        pergunta: 'Qual é a mitologia retratada em God of War (2018)',
         alternativas: [
-            { resposta: '!true', correta: false },
-            { resposta: 'Carro de luxo 02 não é 01 ', correta: false },
-            { resposta: 'Capitalismo é bom', correta: false },
-            { resposta: 'Eu amo minha namorada (biapls)', correta: true },
+            { resposta: 'Mitologia Grega', correta: false },
+            { resposta: 'Mitologia Romana', correta: false },
+            { resposta: 'Mitologia Egípcia', correta: false },
+            { resposta: 'Mitologia Nórdica', correta: true },
 
         ]
     },
     {
-        pergunta: 'Pergunta genérica 2',
+        pergunta: 'Quem ajuda Kratos a salvar Atreus durante o jogo?',
         alternativas: [
-            { resposta: '!true', correta: false },
-            { resposta: 'Carro de luxo 02 não é 01 ', correta: false },
-            { resposta: 'Capitalismo é bom', correta: false },
-            { resposta: 'Eu amo minha namorada (biapls)', correta: true },
+            { resposta: 'Odin', correta: false },
+            { resposta: 'Atena', correta: false },
+            { resposta: 'Freya', correta: true },
+            { resposta: 'Kratos salva atreus sozinho', correta: false },
 
         ]
-    }
+    },
+    {
+        pergunta: 'Qual é o nome da arma principal usada por Kratos em God of War (2018)?',
+        alternativas:[
+            {resposta: 'Lâmina do Caos',correta: false},
+            {resposta: 'Mjölnir', correta: false},
+            {resposta: 'Machado Leviatã', correta:true},
+            {resposta: 'Espadas do Olimpo',correta:false}
+        ]
+    },
+    {
+        pergunta: 'Quem é o principal antagonista no jogo God of War (2018)?',
+        alternativas:[
+            {resposta: 'Zeus',correta: false},
+            {resposta: 'Hades', correta: false},
+            {resposta: 'Ares', correta:false},
+            {resposta: 'Baldur',correta:true}
+        ]
+    },
+    {
+        pergunta: 'Qual é o nome da serpente gigante que Kratos e Atreus encontram em God of War?',
+        alternativas:[
+            {resposta: 'Jörmungandr',correta: true},
+            {resposta: 'Fenrir', correta: false},
+            {resposta: 'Jötunsenperts', correta:false},
+            {resposta: 'Yggdrasil',correta:false}
+        ]
+    },
+    {
+        pergunta: 'Quem é o deus da guerra em God of War (2018)?',
+        alternativas:[
+            {resposta: 'Kratos',correta: false},
+            {resposta: 'Tyr',correta:true},
+            {resposta: 'Hades', correta: false},
+            {resposta: 'Thor', correta:false}
+        ]
+    },
+    {
+        pergunta: 'Qual é o objetivo principal de Kratos e Atreus em sua jornada em God of War (2018)?',
+        alternativas:[
+            {resposta: 'Vingar a morte de Faye e voltarem para a Grécia',correta: false},
+            {resposta: 'Libertar os deuses nórdicos para que todos eles se vinguem da morte injusta de faye', correta: false},
+            {resposta: 'Despejar as cinzas de Faye no topo da montanha mais alta dos 9 reinos',correta:true},
+            {resposta: 'Espalhar caos e destruição', correta:false}
+        ]
+    },
+    {
+        pergunta: 'Por que kratos é obrigado a pegar as Lâminas do caos?',
+        alternativas:[
+            {resposta: 'Para enfrentar um exército de deuses',correta: false},
+            {resposta: 'Para libertar seu irmão aprisionado.', correta: false},
+            {resposta: 'Para entregar as Lâminas para Atreus',correta:false},
+            {resposta: 'Para poder enfrentar o frio dos ventos de helheim e derrotar o guardião do reino para sarvar Atreus', correta:true}
+        ]
+    },
+
+
 ]
 
 

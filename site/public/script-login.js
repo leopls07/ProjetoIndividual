@@ -65,6 +65,9 @@ function doLogin(){
     var email = login_email.value
     var senha = login_senha.value
 
+    const div_aviso = document.querySelector('.aviso')
+    const resposta_aviso = document.querySelector('.resposta-cadastro')
+
    
     fetch('/usuarios/autenticar',{
         method:'POST', 
@@ -81,6 +84,15 @@ function doLogin(){
         if(resposta.ok){
             return resposta.json()
         }else{
+            
+            div_aviso.style.opacity = '1'
+            resposta_aviso.style.color = 'red'
+            resposta_aviso.innerHTML = 'Houve um erro ao realizar o Login!'
+    
+            setTimeout(()=>{
+                div_aviso.style.opacity = '0'
+            },5000)
+    
             console.log("Houve um erro ao tentar realizar o login!");
 
             resposta.text().then(texto => {
@@ -93,7 +105,17 @@ function doLogin(){
         sessionStorage.setItem('idUsuario', dados.idUsuario)
         sessionStorage.setItem('username', dados.username)
         sessionStorage.setItem('email', dados.email)
+        
+        div_aviso.style.opacity = '1'
+        resposta_aviso.style.color = 'green'
+        resposta_aviso.innerHTML = 'Login realizado com sucesso!'
+    
+        
+    
+       setTimeout(() =>{
         window.location.href = '/index.html'
+       },2500)
+
     }).catch(function (erro) {
         console.log(erro);
     })

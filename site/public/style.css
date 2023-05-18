@@ -36,6 +36,32 @@ header{
    z-index: 5;
 }
 
+
+.aviso{
+   width: 220px;
+   height: 60px;
+   border-radius: 5px;
+   position: fixed;
+   left: 50%;
+   right: 50%;
+   transform: translate(-50%);
+   background-color: white;
+   z-index: 999;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   opacity: 0;
+   transition: .2s;
+   margin-top: 95px;
+}
+
+.resposta-cadastro{
+   font-size: 20px;
+   text-align: center;
+   width: 100%;
+   font-weight: 400;
+}
+
 .navigation{
    display: flex;
    align-items: center;
@@ -128,13 +154,13 @@ transition: .3s;
 
 
 
-.btnEntrar a{
+.btnEntrar {
    font-family: 'Montserrat',sans-serif;
    font-size: 24px;
    color:rgb(0, 0, 0);
    font-weight: 400;
    border: 2px solid #fff;
-   padding: 10px 20px ;
+   padding: 10px 30px ;
    text-decoration: none;
    border-radius: 5px ;
    letter-spacing: 2px;
@@ -143,7 +169,7 @@ transition: .3s;
    
 }
 
-.btnEntrar a:hover{
+.btnEntrar:hover{
    background-color: black;
    color: rgb(255, 255, 255);
    transform: scale(1.05);
@@ -373,8 +399,6 @@ filter: grayscale(1);
    background-image: url('https://upload.wikimedia.org/wikipedia/pt/6/6c/God_of_War_3_capa.png');
    background-position: center;
    background-size: 105% ;
-  
-   
 }
 
 

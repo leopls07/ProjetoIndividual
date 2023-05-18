@@ -49,12 +49,10 @@ login_erro.style.opacity = '1'
 
 // TIRAR ERRO CASO USUÁRIO VOLTE A DIGITAR
 login_email.addEventListener('focus', () =>{
-    login_erro.innerHTML = ''
     login_erro.style.opacity = '0' ;
 })
 
 login_senha.addEventListener('focus', () =>{
-    login_erro.innerHTML = ''
     login_erro.style.opacity = '0';
 })
 
@@ -105,7 +103,6 @@ function doLogin(){
         sessionStorage.setItem('idUsuario', dados.idUsuario)
         sessionStorage.setItem('username', dados.username)
         sessionStorage.setItem('email', dados.email)
-        
         div_aviso.style.opacity = '1'
         resposta_aviso.style.color = 'green'
         resposta_aviso.innerHTML = 'Login realizado com sucesso!'
@@ -114,7 +111,7 @@ function doLogin(){
     
        setTimeout(() =>{
         window.location.href = '/index.html'
-       },2500)
+       },1500)
 
     }).catch(function (erro) {
         console.log(erro);

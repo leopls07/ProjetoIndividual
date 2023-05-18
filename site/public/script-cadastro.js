@@ -23,7 +23,7 @@ cadastro_btn.addEventListener('click', () => {
     const verificarnumeros = numeros.some(item => senha.includes(item))
     const verificarsc = sc.some(e => senha.includes(e))
 
-    const senha_validation = verificarnumeros && verificarsc && senha.toLowerCase() != senha && senha.length >= 6 // VARIAVEL PARA VERIFICAR SENHA VÁLIDA
+    const senha_validation = verificarnumeros && verificarsc && senha.length > 6 // VARIAVEL PARA VERIFICAR SENHA VÁLIDA
 
     const email_validation =    // VARIAVEL PARA VERIFICAR EMAIL VÁLIDO
         email.indexOf('@') != -1 &&
@@ -44,9 +44,11 @@ cadastro_btn.addEventListener('click', () => {
         cadastro_erro.innerHTML = 'Email Inválido'
         cadastro_erro.style.opacity = '1';
     } else if (!senha_validation) {
-         
-        cadastro_erro.innerHTML = 'Senha Inválida'
+        cadastro_erro.innerHTML = 'Senha precisa conter números e pelo menos um caractere especial.'
         cadastro_erro.style.opacity = '1'
+        if(senha.length <= 6){
+            cadastro_erro.innerHTML = 'Senha precisa conter no mínimo 6 digitos.'
+        }
     } else if (senha != senha_conf) {
          
         cadastro_erro.innerHTML = 'Senhas diferentes'
@@ -115,7 +117,7 @@ fetch("/usuarios/cadastrar", {
 
    setTimeout(() =>{
        window.location.href = './login.html'
-   },2500)
+   },1500)
 
 }).catch(function (resposta) {
     console.log(`#ERRO: ${resposta}`);
@@ -129,21 +131,17 @@ fetch("/usuarios/cadastrar", {
 
 
 cadastro_email.addEventListener('focus', () => {
-    cadastro_erro.innerHTML = ''
     cadastro_erro.style.opacity = '0'
 })
 
 cadastro_senha.addEventListener('focus', () => {
-    cadastro_erro.innerHTML = ''
     cadastro_erro.style.opacity = '0'
 })
 cadastro_usuario.addEventListener('focus', () => {
-    cadastro_erro.innerHTML = ''
     cadastro_erro.style.opacity = '0'
 })
 
 cadastro_senhaconf.addEventListener('focus', () => {
-    cadastro_erro.innerHTML = ''
     cadastro_erro.style.opacity = '0'
 
 })

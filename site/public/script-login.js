@@ -118,3 +118,20 @@ function doLogin(){
     })
     
 }
+
+const img_icon_senha = document.querySelector('#img-icon-senha')
+let verificarOlho = 0
+img_icon_senha.addEventListener('click', ()=>{
+    if(verificarOlho == 0){
+        img_icon_senha.setAttribute('src', './assets/olhoabrido.png')
+        verificarOlho = 1
+        login_senha.type = 'text'
+        
+    }else{
+        img_icon_senha.setAttribute('src', './assets/olhofechado.png')
+        verificarOlho = 0
+        login_senha.type = 'password'
+    }
+})
+
+

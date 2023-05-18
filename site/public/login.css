@@ -258,6 +258,18 @@ margin-right: 10px;
    }
 
 
+   .img-icon{
+    width: 30px;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    margin-bottom: 5px;
+    transition: .2s;
+    cursor: pointer;
+   }
+
+
+
 
 .divBtn{
 margin-top: 30px;

@@ -13,6 +13,7 @@ const questaoAtualElement = document.querySelector('#questaoAtual')
 const quizFormElement = document.querySelector('#quiz-form')
 const body = document.querySelector('body')
 
+let username = sessionStorage.getItem('username')
 
 let questaoAtualPosicao = 0
 let pontuacao = 0
@@ -98,6 +99,7 @@ function selecionarResposta(e) {
 }
 
 function mostrarPontuacao() {
+    alert('Eu sei quem você é ' + username)
     resetarQuestoesAnteriores()
     perguntaH2.innerHTML = `Resultado: ${pontuacao}/${perguntas.length} `
     proximoBtn.innerHTML = `Jogar Novamente`

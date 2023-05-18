@@ -4,6 +4,8 @@ const cadastro_senha = document.querySelector('#ipt_cadastro_senha')
 const cadastro_senhaconf = document.querySelector('#ipt_cadastro_senha_conf')
 const cadastro_erro = document.querySelector('#cadastro_erro')
 
+
+
 const cadastro_btn = document.querySelector('#btn_cadastro')
 
 const numeros = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0]
@@ -144,4 +146,34 @@ cadastro_usuario.addEventListener('focus', () => {
 cadastro_senhaconf.addEventListener('focus', () => {
     cadastro_erro.style.opacity = '0'
 
+})
+const img_icon_senha = document.querySelector('#img-icon-senha')
+const img_icon_senha_conf = document.querySelector('#img-icon-senha-conf')
+let verificarOlho = 0
+let verificarOlho2 = 0
+img_icon_senha.addEventListener('click', ()=>{
+    if(verificarOlho == 0){
+        img_icon_senha.setAttribute('src', './assets/olhoabrido.png')
+        verificarOlho = 1
+        cadastro_senha.type = 'text'
+        
+    }else{
+        img_icon_senha.setAttribute('src', './assets/olhofechado.png')
+        verificarOlho = 0
+        cadastro_senha.type = 'password'
+    }
+})
+
+
+img_icon_senha_conf.addEventListener('click', ()=>{
+    if(verificarOlho2 == 0){
+        img_icon_senha_conf.setAttribute('src', './assets/olhoabrido.png')
+        verificarOlho2 = 1
+        cadastro_senhaconf.type = 'text'
+        
+    }else{
+        img_icon_senha_conf.setAttribute('src', './assets/olhofechado.png')
+        verificarOlho2 = 0
+        cadastro_senhaconf.type = 'password'
+    }
 })

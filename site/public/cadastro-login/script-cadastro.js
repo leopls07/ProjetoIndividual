@@ -153,12 +153,12 @@ let verificarOlho = 0
 let verificarOlho2 = 0
 img_icon_senha.addEventListener('click', ()=>{
     if(verificarOlho == 0){
-        img_icon_senha.setAttribute('src', './assets/olhoabrido.png')
+        img_icon_senha.setAttribute('src', '../assets/olhoabrido.png')
         verificarOlho = 1
         cadastro_senha.type = 'text'
         
     }else{
-        img_icon_senha.setAttribute('src', './assets/olhofechado.png')
+        img_icon_senha.setAttribute('src', '../assets/olhofechado.png')
         verificarOlho = 0
         cadastro_senha.type = 'password'
     }
@@ -167,12 +167,12 @@ img_icon_senha.addEventListener('click', ()=>{
 
 img_icon_senha_conf.addEventListener('click', ()=>{
     if(verificarOlho2 == 0){
-        img_icon_senha_conf.setAttribute('src', './assets/olhoabrido.png')
+        img_icon_senha_conf.setAttribute('src', '../assets/olhoabrido.png')
         verificarOlho2 = 1
         cadastro_senhaconf.type = 'text'
         
     }else{
-        img_icon_senha_conf.setAttribute('src', './assets/olhofechado.png')
+        img_icon_senha_conf.setAttribute('src', '../assets/olhofechado.png')
         verificarOlho2 = 0
         cadastro_senhaconf.type = 'password'
     }

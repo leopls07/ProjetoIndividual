@@ -309,7 +309,7 @@ align-items: center;
 filter: saturate(2);
     height: 85vh;
     width: 50%;
-    background-image: url(./assets/imggowragnarok.jpg);
+    background-image: url(../assets/imggowragnarok.jpg);
     background-position: center;
    background-size: cover;
     margin: 20px 0px 20px 20px;

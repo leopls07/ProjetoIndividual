@@ -31,9 +31,7 @@ if(statusUsuario == false){
         document.body.style.overflowY = 'hidden'
        setTimeout(()=>{
            div_confirmacao_sair.style.opacity = '1'
-       },200)
-    
-       
+       },200)   
 })
 }
 

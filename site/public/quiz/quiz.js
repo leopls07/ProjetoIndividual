@@ -133,6 +133,14 @@ proximoBtn.addEventListener('click', () => {
 
 
 
+// const btnSairQuiz = document.querySelector('#btn-sair-quiz')
+
+
+// btnSairQuiz.addEventListener('click', ()=>{
+//     alert('Ola')
+// })
+
+
 
 
 

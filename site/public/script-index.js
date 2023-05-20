@@ -4,8 +4,12 @@ const btnEntrar = document.querySelector('#btn-entrar')
 const div_aviso = document.querySelector('.aviso')
 const resposta_aviso = document.querySelector('.resposta-cadastro')
 
+/*BOTÕES DOS QUIZZES*/ 
 const btn_comecar_2018 = document.querySelector('#btn-comecar-2018')
+const btn_comecar_ragnarok = document.querySelector('#btn-comecar-ragnarok')
+const btn_comecar_gow3 = document.querySelector('#btn-comecar-gow3')
 
+/*DIV DE CONFIRMAÇÃO APÓS CLICARNO BOTAO DE SAIR */
 const div_confirmacao_sair = document.querySelector('#div-confirmacao-sair')
 const btn_sair = document.querySelector('#btn-sair')
 const btn_cancelar = document.querySelector('#btn-cancelar')
@@ -76,5 +80,30 @@ btn_comecar_2018.addEventListener('click', ()=>{
         },1000)
     }else{
         window.location.href = '../quiz/quiz-gow2018.html'
+    }
+})
+
+
+btn_comecar_ragnarok.addEventListener('click', ()=>{
+    if(statusUsuario == false){
+        div_aviso.style.opacity = '1'
+        resposta_aviso.innerHTML = 'Logue para fazer o quiz'
+        setTimeout(()=>{
+            div_aviso.style.opacity = '0'
+        },1000)
+    }else{
+        window.location.href = '../quiz/quiz-ragnarok.html'
+    }
+})
+
+btn_comecar_gow3.addEventListener('click', ()=>{
+    if(statusUsuario == false){
+        div_aviso.style.opacity = '1'
+        resposta_aviso.innerHTML = 'Logue para fazer o quiz'
+        setTimeout(()=>{
+            div_aviso.style.opacity = '0'
+        },1000)
+    }else{
+        window.location.href = '../quiz/quiz-gow3.html'
     }
 })

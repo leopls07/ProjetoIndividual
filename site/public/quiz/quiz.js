@@ -133,12 +133,45 @@ proximoBtn.addEventListener('click', () => {
 
 
 
-// const btnSairQuiz = document.querySelector('#btn-sair-quiz')
+const btnSairQuiz = document.querySelector('#btn-sair-quiz')
+
+const div_confirmacao_sair = document.querySelector('#div-confirmacao-sair')
+const btn_sair = document.querySelector('#btn-sair')
+const btn_cancelar = document.querySelector('#btn-cancelar')
+
+const divBlur = document.querySelector('#blurred')
+
+btnSairQuiz.addEventListener('click', ()=>{
+    
+    div_confirmacao_sair.style.opacity = '1'
+    div_confirmacao_sair.style.display = 'block'
+    divBlur.style.filter = 'blur(4px)'
+   
+btn_sair.addEventListener('click',()=>{
+
+    div_confirmacao_sair.style.opacity = '0'
+    div_confirmacao_sair.style.display = 'none'
+    document.body.style.overflowY = 'auto'
+    
+
+   location.href = '../index.html'
+    
+})
+
+btn_cancelar.addEventListener('click',()=>{
+    document.body.style.overflowY = 'auto'
+    div_confirmacao_sair.style.opacity = '0'
+    div_confirmacao_sair.style.display = 'none'
+    divBlur.style.filter = ''
+})
 
 
-// btnSairQuiz.addEventListener('click', ()=>{
-//     alert('Ola')
-// })
+})
+
+
+
+
+
 
 
 

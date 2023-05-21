@@ -14,7 +14,8 @@ const quizFormElement = document.querySelector('#quiz-form')
 const body = document.querySelector('body')
 
 let username = sessionStorage.getItem('username')
-
+let idUsuario = sessionStorage.getItem('idUsuario')
+let idQuiz; // id 1 = gow 3 / id 2 = gow 2018 / id 3 = gow ragnarok
 let questaoAtualPosicao = 0
 let pontuacao = 0
 
@@ -26,10 +27,13 @@ function comecarQuiz() {
     proximoBtn.innerHTML = 'Próximo'
 
     if (body.id == 'quiz-ragnarok-html') {
+        idQuiz = 3
         perguntas = perguntasRagnarok
     } else if (body.id == 'quiz-gow2018-html') {
+        idQuiz = 2
         perguntas = perguntasGow2018
     } else if (body.id == 'quiz-gow3-html') {
+        idQuiz = 1
         perguntas = perguntasGow3
     }
 
@@ -118,6 +122,7 @@ function handleNextButton() {
         mostrarPergunta()
 
     } else {
+        inserirTentativa()
         mostrarPontuacao()
     }
 }
@@ -170,9 +175,32 @@ btn_cancelar.addEventListener('click',()=>{
 
 
 
+async function inserirTentativa(){
+   await fetch('/tentativas/inserir', {
+        method: 'POST',
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          idUsuarioServer: idUsuario,
+          idQuizServer: idQuiz,
+          pontuacaoServer: (pontuacao * 10) 
+        })
+      }).then((resposta)=>{
+        if(resposta.ok){
+            return resposta.json()
+        }
+      }).then((resposta)=>{
+            console.log(resposta)
+      }).catch(err => console.error(err))
+
+}
 
 
-
+async function pegarPontuacao(){
+    await fetch('/tentativas/inserir', {
+    })
+}
 
 
 

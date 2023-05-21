@@ -43,9 +43,9 @@ CREATE TABLE tentativa(
     idTentativa int primary key AUTO_INCREMENT,
     fkQuiz int ,
     fkUsuario int,
+    pontuacao int ,
     foreign key (fkQuiz) references quiz (idQuiz),
-    foreign key (fkUsuario) references usuario (idUsuario),
-    pontuacao int 
+    foreign key (fkUsuario) references usuario (idUsuario)
 );
 
 

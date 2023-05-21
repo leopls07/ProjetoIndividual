@@ -7,8 +7,6 @@ INSERT INTO usuario values
 
 desc quiz;
 insert into quiz values 
-(null,'Quiz Gow 1',10),
-(null,'Quiz Gow 2',10),
-(null,'Quiz Gow 3',12),
-(null,'Quiz Gow 2018',14),
-(null,'Quiz Gow Ragnarok',14);
+(1,'Quiz Gow 3',10),
+(2,'Quiz Gow 2018',10),
+(3,'Quiz Gow Ragnarok',10);

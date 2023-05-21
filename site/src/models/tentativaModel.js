@@ -13,6 +13,14 @@ function inserir(idQuiz, idUsuario, pontuacao) {
     return database.executar(instrucao);
 }
 
+function selecionarMedia (idQuiz){ 
+  var instrucao = `SELECT AVG(pontuacao) as 'media' FROM tentativa WHERE fkQuiz = ${idQuiz};`
+  console.log('Executando \n ' + instrucao)
+  return database.executar(instrucao)
+
+}
+
 module.exports = {
-    inserir
+    inserir,
+    selecionarMedia
 };

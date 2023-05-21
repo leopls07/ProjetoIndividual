@@ -72,10 +72,23 @@ btn-sair:hover{
 }
 
 .quiz-form h1{
-  text-align: center;
-    border-bottom: 1px solid black;
-  padding-bottom: 30px;
-  font-size: 25px;
+    font-size: 25px;
+    padding-bottom: 20px;
+
+}
+
+.upper-part{
+    color: rgb(0, 0, 0);
+    border-bottom: 1px solid rgb(0, 0, 0);
+    width: 100%;
+    padding: 0 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+}
+
+.timer{
+    font-size: 20px;
 }
 
 .quiz h2{

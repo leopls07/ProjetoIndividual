@@ -18,9 +18,10 @@ let idUsuario = sessionStorage.getItem('idUsuario')
 let idQuiz; // id 1 = gow 3 / id 2 = gow 2018 / id 3 = gow ragnarok
 let questaoAtualPosicao = 0
 let pontuacao = 0
-
+let pontuacaoMediaDoQuiz 
 
 function comecarQuiz() {
+    timer()
     questaoAtualPosicao = 0
     questaoAtual = 0
     pontuacao = 0
@@ -49,6 +50,7 @@ function mostrarPergunta() {
 
     resetarQuestoesAnteriores()
 
+
     let questaoAtual = perguntas[questaoAtualPosicao]
     let questaoNumero = questaoAtualPosicao + 1
     perguntaH2.innerHTML = questaoNumero + ' - ' + questaoAtual.pergunta
@@ -67,7 +69,7 @@ function mostrarPergunta() {
     })
 
     questaoAtualElement.innerHTML = `${questaoAtualPosicao + 1}/${perguntas.length}`
-
+        
 
 }
 
@@ -102,10 +104,10 @@ function selecionarResposta(e) {
 
 }
 
-function mostrarPontuacao() {
-    alert('Eu sei quem você é ' + username)
+ async function mostrarPontuacao() {
     resetarQuestoesAnteriores()
-    perguntaH2.innerHTML = `Resultado: ${pontuacao}/${perguntas.length} `
+    perguntaH2.innerHTML = `Resultado: ${pontuacao * 10}/${perguntas.length * 10} <br>
+    Pontuação média do quiz: ${pontuacaoMediaDoQuiz} `
     proximoBtn.innerHTML = `Jogar Novamente`
     proximoBtn.style.opacity = "1"
     proximoBtn.style.display = "block"
@@ -122,8 +124,17 @@ function handleNextButton() {
         mostrarPergunta()
 
     } else {
+        clearInterval(timerInterval)
         inserirTentativa()
-        mostrarPontuacao()
+        pegarPontuacaoMedia(idQuiz)
+
+        const intervalo = setInterval(()=>{
+                if(pontuacaoMediaDoQuiz != undefined){
+                    mostrarPontuacao()
+                    clearInterval(intervalo)
+                }
+        },100)
+        
     }
 }
 
@@ -135,6 +146,48 @@ proximoBtn.addEventListener('click', () => {
         comecarQuiz()
     }
 })
+let timerInterval
+let minutos = 0
+let segundos = 0
+let milesimos = 0
+const divTimer = document.querySelector('#timer')
+function timer(){
+     timerInterval = setInterval(()=>{
+        if(milesimos < 10){
+            if(segundos < 10){
+                var tempo = `${minutos} : 0${segundos} :  00${milesimos}`
+            }else{
+                var tempo = `${minutos} : ${segundos} :  00${milesimos}`
+            }
+        }else if(milesimos < 100){
+            if(segundos < 10){
+                var tempo = `${minutos} : 0${segundos} :  0${milesimos}`
+            }else{
+                var tempo = `${minutos} : ${segundos} :  0${milesimos}`
+            }
+        }else{
+            if(segundos < 10){
+                var tempo = `${minutos} : 0${segundos} :  ${milesimos}`
+            }else{
+                var tempo = `${minutos} :  ${segundos} :  ${milesimos}`
+            } 
+        }
+        if(milesimos == 990){
+            milesimos = 0
+            segundos ++
+        }
+        if(segundos == 60){
+            segundos = 0
+            minutos ++
+        }
+        if(minutos == 60){
+            alert(':( cabo o quiz né')
+        }
+        divTimer.innerHTML = `${tempo}`
+        milesimos+=10
+    },10)
+}
+
 
 
 
@@ -197,10 +250,28 @@ async function inserirTentativa(){
 }
 
 
-async function pegarPontuacao(){
-    await fetch('/tentativas/inserir', {
+async function pegarPontuacaoMedia(idQuiz){
+   await fetch(`/tentativas/selecionarMedia/${idQuiz}`, {cache: 'no-store'}).then((response)=>{
+        if (response.ok) {
+            response.json().then(function (resposta) {
+                console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+                 pontuacaoMediaDoQuiz = (parseFloat(resposta[0].media)).toFixed(2)
+                 console.log(pontuacaoMediaDoQuiz + 'Pontuacao var')
+                 console.log(resposta[0].media)
+                resposta.reverse();
+
+             
+            });
+        } else {
+            console.error('Nenhum dado encontrado ou erro na API');
+        }
     })
-}
+        .catch(function (error) {
+            console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+        });
+    }
+
+
 
 
 

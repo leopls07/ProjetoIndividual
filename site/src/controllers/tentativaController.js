@@ -9,11 +9,11 @@ function inserir(req, res) {
       var idUsuario = req.body.idUsuarioServer
       var idQuiz = req.body.idQuizServer
       var pontuacao = req.body.pontuacaoServer 
-
+      var tempo = req.body.tempoServer
     // Faça as validações dos valores
         
         // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
-        tentativaModel.inserir(idQuiz,idUsuario, pontuacao)
+        tentativaModel.inserir(idQuiz,idUsuario, pontuacao,tempo)
             .then(
                 function (resultado) {
                     res.json(resultado);

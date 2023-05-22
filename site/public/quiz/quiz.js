@@ -105,18 +105,24 @@ function selecionarResposta(e) {
 }
 
  async function mostrarPontuacao() {
-    resetarQuestoesAnteriores()
+     resetarQuestoesAnteriores()
+     minutos = 0
+     segundos = 0
+     milesimos = 0
+
+     proximoBtn.style.display = "block"
+     proximoBtn.style.opacity = "1"
+     proximoBtn.innerHTML = `Jogar Novamente`
+
     perguntaH2.innerHTML = `Resultado: ${pontuacao * 10}/${perguntas.length * 10} <br>
     Pontuação média do quiz: ${pontuacaoMediaDoQuiz} `
-    proximoBtn.innerHTML = `Jogar Novamente`
-    proximoBtn.style.opacity = "1"
-    proximoBtn.style.display = "block"
-    questaoAtualElement.innerHTML = ''
 
+    questaoAtualElement.innerHTML = 'Ver classificação 🏆'
+    questaoAtualElement.classList.add('verClassificacao')
 
 
 }
-
+let tempoFinal = 0
 function handleNextButton() {
     questaoAtualPosicao++
     if (questaoAtualPosicao < perguntas.length) {
@@ -125,7 +131,33 @@ function handleNextButton() {
 
     } else {
         clearInterval(timerInterval)
+    
+        
+        if(milesimos < 10){
+            if(segundos < 10){
+                 tempoFinal = Number(`${minutos}0${segundos}00${milesimos - 10}`)
+            }else{
+                 tempoFinal = Number(`${minutos}${segundos}00${milesimos - 10}`)
+            }
+        }else if(milesimos < 100){
+            if(segundos < 10){
+                 tempoFinal = Number(`${minutos}0${segundos}0${milesimos - 10}`)
+            }else{
+                 tempoFinal = Number(`${minutos}${segundos}0${milesimos -10}`)
+            }
+        }else{
+            if(segundos < 10){
+                 tempoFinal = Number(`${minutos}0${segundos}${milesimos -10}`)
+            }else{
+                 tempoFinal = Number(`${minutos}${segundos}${milesimos -10}`)
+            } 
+        }
+
         inserirTentativa()
+
+        setTimeout(()=>{
+
+       
         pegarPontuacaoMedia(idQuiz)
 
         const intervalo = setInterval(()=>{
@@ -134,6 +166,7 @@ function handleNextButton() {
                     clearInterval(intervalo)
                 }
         },100)
+    },200)
         
     }
 }
@@ -146,6 +179,8 @@ proximoBtn.addEventListener('click', () => {
         comecarQuiz()
     }
 })
+
+
 let timerInterval
 let minutos = 0
 let segundos = 0
@@ -172,7 +207,7 @@ function timer(){
                 var tempo = `${minutos} :  ${segundos} :  ${milesimos}`
             } 
         }
-        if(milesimos == 990){
+        if(milesimos == 1000){
             milesimos = 0
             segundos ++
         }
@@ -227,8 +262,8 @@ btn_cancelar.addEventListener('click',()=>{
 })
 
 
-
-async function inserirTentativa(){
+let tentativaAtual;
+ async function inserirTentativa(){
    await fetch('/tentativas/inserir', {
         method: 'POST',
         headers: {
@@ -237,14 +272,17 @@ async function inserirTentativa(){
         body: JSON.stringify({
           idUsuarioServer: idUsuario,
           idQuizServer: idQuiz,
-          pontuacaoServer: (pontuacao * 10) 
+          pontuacaoServer: (pontuacao * 10) ,
+          tempoServer: tempoFinal
         })
       }).then((resposta)=>{
         if(resposta.ok){
             return resposta.json()
         }
-      }).then((resposta)=>{
-            console.log(resposta)
+    }).then((resposta)=>{
+        tentativaAtual = resposta.insertId
+        // console.log(tentativaAtual)
+            // console.log(resposta)
       }).catch(err => console.error(err))
 
 }
@@ -254,10 +292,10 @@ async function pegarPontuacaoMedia(idQuiz){
    await fetch(`/tentativas/selecionarMedia/${idQuiz}`, {cache: 'no-store'}).then((response)=>{
         if (response.ok) {
             response.json().then(function (resposta) {
-                console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+                // console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
                  pontuacaoMediaDoQuiz = (parseFloat(resposta[0].media)).toFixed(2)
-                 console.log(pontuacaoMediaDoQuiz + 'Pontuacao var')
-                 console.log(resposta[0].media)
+                //  console.log(pontuacaoMediaDoQuiz + 'Pontuacao var')
+                //  console.log(resposta[0].media)
                 resposta.reverse();
 
              
@@ -289,36 +327,36 @@ const perguntasGow3 = [
         ]
     },
 
-    {
-        pergunta: 'Quantos anos tem Atreus durante o jogo?',
-        alternativas: [
-            { resposta: '15', correta: false },
-            { resposta: '14', correta: true },
-            { resposta: '16', correta: false },
-            { resposta: '13', correta: false },
+    // {
+    //     pergunta: 'Quantos anos tem Atreus durante o jogo?',
+    //     alternativas: [
+    //         { resposta: '15', correta: false },
+    //         { resposta: '14', correta: true },
+    //         { resposta: '16', correta: false },
+    //         { resposta: '13', correta: false },
 
-        ]
-    },
-    {
-        pergunta: 'Pergunta genérica',
-        alternativas: [
-            { resposta: '!true', correta: false },
-            { resposta: 'Carro de luxo 02 não é 01 ', correta: false },
-            { resposta: 'Capitalismo é bom', correta: false },
-            { resposta: 'Eu amo minha namorada (biapls)', correta: true },
+    //     ]
+    // },
+    // {
+    //     pergunta: 'Pergunta genérica',
+    //     alternativas: [
+    //         { resposta: '!true', correta: false },
+    //         { resposta: 'Carro de luxo 02 não é 01 ', correta: false },
+    //         { resposta: 'Capitalismo é bom', correta: false },
+    //         { resposta: 'Eu amo minha namorada (biapls)', correta: true },
 
-        ]
-    },
-    {
-        pergunta: 'Pergunta genérica 2',
-        alternativas: [
-            { resposta: '!true', correta: false },
-            { resposta: 'Carro de luxo 02 não é 01 ', correta: false },
-            { resposta: 'Capitalismo é bom', correta: false },
-            { resposta: 'Eu amo minha namorada (biapls)', correta: true },
+    //     ]
+    // },
+    // {
+    //     pergunta: 'Pergunta genérica 2',
+    //     alternativas: [
+    //         { resposta: '!true', correta: false },
+    //         { resposta: 'Carro de luxo 02 não é 01 ', correta: false },
+    //         { resposta: 'Capitalismo é bom', correta: false },
+    //         { resposta: 'Eu amo minha namorada (biapls)', correta: true },
 
-        ]
-    }
+    //     ]
+    // }
 ]
 
 

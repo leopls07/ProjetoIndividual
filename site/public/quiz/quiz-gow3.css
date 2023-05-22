@@ -159,6 +159,69 @@ background-color: #ff9393;
 }
 
 
+.verClassificacao{
+    font-size: 20px;
+    cursor: pointer;
+}
+.verClassificacao:hover{
+    border-bottom: #000000 2px solid;
+}
+
+
+.classificacao-container{
+    width: 100%;
+    font-size: 22px;
+    display: flex;
+    flex-direction: column;
+}
+
+.resultados-container{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 10px 10px 10px 0;
+}
+
+
+.topico-container{
+    width: 100%;
+    overflow-y: auto;
+    display: flex;
+    justify-content: center;
+    border-bottom: #000000 1px solid;
+    padding: 10px 10px 10px 0;
+}
+
+
+.topicos{
+    width: 80%;
+    display: flex;
+    justify-content: space-between;
+    font-size: 22px;
+}
+
+.tituloResultadoRanking{
+    display: flex;
+    width: 30%;
+    justify-content: space-between;
+    
+}
+
+.tentativa-ranking{
+    width: 100%;
+    display: flex;
+    
+    justify-content: space-between;
+    align-items: center;
+}
+
+.resultadosRanking{
+    display: flex;
+    width: 30%;
+    justify-content: space-between;
+    font-size: 18px;
+}
+
 
 
 

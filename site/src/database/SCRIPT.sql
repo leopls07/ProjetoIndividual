@@ -44,6 +44,7 @@ CREATE TABLE tentativa(
     fkQuiz int ,
     fkUsuario int,
     pontuacao int ,
+    tempo int,
     foreign key (fkQuiz) references quiz (idQuiz),
     foreign key (fkUsuario) references usuario (idUsuario)
 );

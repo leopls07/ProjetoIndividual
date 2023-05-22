@@ -20,10 +20,18 @@ function selecionarMedia (idQuiz){
 
 }
 
+function selecionarMelhoresTentativas(idQuiz){
+    var fkQuiz = parseInt(idQuiz)
+    var instrucaoSelect = `select * from tentativa join usuario on idUsuario = fkUsuario where fkQuiz = ${fkQuiz} order by pontuacao desc, tempo asc LIMIT 10;`
+    console.log('Executando \n ' + instrucaoSelect)
+    return database.executar(instrucaoSelect)
+}
 
-// select * from tentativa order by pontuacao desc, tempo asc where fkQuiz = 1;  futuro select pra pegar o jonson ne
+
+// var instrucao = select * from tentativa where fkQuiz = 3 order by pontuacao desc, tempo asc LIMIT 10 ;  futuro select pra pegar o jonson ne
 
 module.exports = {
     inserir,
-    selecionarMedia
+    selecionarMedia,
+    selecionarMelhoresTentativas
 };

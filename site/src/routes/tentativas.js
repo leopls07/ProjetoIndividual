@@ -10,6 +10,10 @@ router.get("/selecionarMedia/:idQuiz", function (req, res) {
     tentativaController.selecionarMedia(req, res);
 });
 
+router.get("/selecionarMelhoresTentativas/:idQuiz", function (req, res) {
+    tentativaController.selecionarMelhoresTentativas(req, res);
+});
+
 //Recebendo os dados do html e direcionando para a função cadastrar de tentativaController.js
 router.post("/inserir", function (req, res) {
     tentativaController.inserir(req, res);

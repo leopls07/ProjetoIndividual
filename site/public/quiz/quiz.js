@@ -39,6 +39,7 @@ function comecarQuiz() {
     }
 
     mostrarPergunta()
+    
 }
 
 function mostrarPergunta() {
@@ -106,6 +107,8 @@ function selecionarResposta(e) {
 
  async function mostrarPontuacao() {
      resetarQuestoesAnteriores()
+     selecionarMelhoresTentativas(idQuiz)
+
      minutos = 0
      segundos = 0
      milesimos = 0
@@ -119,7 +122,6 @@ function selecionarResposta(e) {
 
     questaoAtualElement.innerHTML = 'Ver classificação 🏆'
     questaoAtualElement.classList.add('verClassificacao')
-
 
 }
 let tempoFinal = 0
@@ -159,6 +161,7 @@ function handleNextButton() {
 
        
         pegarPontuacaoMedia(idQuiz)
+        
 
         const intervalo = setInterval(()=>{
                 if(pontuacaoMediaDoQuiz != undefined){
@@ -186,6 +189,7 @@ let minutos = 0
 let segundos = 0
 let milesimos = 0
 const divTimer = document.querySelector('#timer')
+
 function timer(){
      timerInterval = setInterval(()=>{
         if(milesimos < 10){
@@ -308,6 +312,89 @@ async function pegarPontuacaoMedia(idQuiz){
             console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
         });
     }
+
+
+function renderTentativa(){
+    const tentativas_container = document.querySelector('#tentativas')
+
+    const tentativa_div = document.createElement('div')
+    tentativa_div.id = 'tentativa-ranking'
+    tentativa_div.classList.add('tentativa-ranking')
+    tentativas_container.appendChild(tentativa_div)
+
+    const username_div = document.createElement('div')
+    const resultados_div = document.createElement('div')
+
+    username_div.classList.add('userRanking')
+    resultados_div.classList.add('resultadosRanking')
+
+    tentativa_div.appendChild(resultados_div)
+    tentativa_div.appendChild(username_div)
+
+    const pontuacao_div = document.createElement('div')
+    const tempo_div = document.createElement('div')
+
+    resultados_div.appendChild(pontuacao_div)
+    resultados_div.appendChild(tempo_div)
+    
+    
+
+
+
+}
+
+
+async function selecionarMelhoresTentativas(idQuiz){
+
+    await fetch(`/tentativas/selecionarMelhoresTentativas/${idQuiz}`, {cache: 'no-store'}).then((response)=>{
+        if (response.ok) {
+            response.json().then(function (resposta) {
+                
+            
+                  for(i = 0; i<resposta.length; i++){
+                      let usernameTentativa = resposta[i].username
+                      let pontuacaoTentativa = resposta[i].pontuacao
+                      let tempoTentativa = resposta[i].tempo
+
+                      const tentativas_container = document.querySelector('#tentativas')
+
+                    const tentativa_div = document.createElement('div')
+                    tentativa_div.id = 'tentativa-ranking'
+                    tentativa_div.classList.add('tentativa-ranking')
+                    tentativas_container.appendChild(tentativa_div)
+
+                    const username_div = document.createElement('div')
+                    const resultados_div = document.createElement('div')
+
+                    username_div.classList.add('userRanking')
+                    resultados_div.classList.add('resultadosRanking')
+
+                    tentativa_div.appendChild(resultados_div)
+                    tentativa_div.appendChild(username_div)
+
+                    const pontuacao_div = document.createElement('div')
+                    const tempo_div = document.createElement('div')
+
+                    resultados_div.appendChild(pontuacao_div)
+                    resultados_div.appendChild(tempo_div)
+
+                    username_div.innerHTML = `${usernameTentativa}`
+                    pontuacao_div.innerHTML = `${pontuacaoTentativa}`
+                    tempo_div.innerHTML = `${tempoTentativa}`
+                      
+                }
+             
+            });
+        } else {
+            console.error('Nenhum dado encontrado ou erro na API');
+        }
+    })
+        .catch(function (error) {
+            console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+        });
+    }
+
+
 
 
 

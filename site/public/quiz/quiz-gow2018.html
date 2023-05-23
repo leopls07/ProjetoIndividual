@@ -1,63 +1,78 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>GOW Legacy</title>
-    <link
-      rel="shortcut icon"
-      href="../assets/logo_gold.ico"
-      type="image/x-icon"
-    />
-    <link rel="stylesheet" href="quiz-gow2018.css" />
-    <link rel="stylesheet" href="../Fonts/fonts.css" />
-  </head>
-  <body id="quiz-gow2018-html">
 
-    <div id="div-confirmacao-sair" class="confirmacao-sair">
-      <h2>Deseja realmente sair? <br> Você perderá seu progresso.</h2>
-      <div class="grupo-botoes-sair">
-        <button id="btn-sair">Sair</button>
-        <button id="btn-cancelar">Cancelar</button>
-      </div>
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GOW Legacy</title>
+  <link rel="shortcut icon" href="../assets/logo_gold.ico" type="image/x-icon" />
+  <link rel="stylesheet" href="quiz-gow2018.css" />
+  <link rel="stylesheet" href="../Fonts/fonts.css" />
+</head>
+
+<body id="quiz-gow2018-html">
+
+  <div id="div-confirmacao-sair" class="confirmacao-sair">
+    <h2>Deseja realmente sair? <br> Você perderá seu progresso.</h2>
+    <div class="grupo-botoes-sair">
+      <button id="btn-sair">Sair</button>
+      <button id="btn-cancelar">Cancelar</button>
+    </div>
+  </div>
+
+  <div id="blurred">
+    <div class="wrapper">
+      <div id="stars"></div>
+      <div id="stars2"></div>
+      <div id="stars3 "></div>
     </div>
 
-    <div id="blurred">
-      <div class="wrapper">
-        <div id="stars"></div>
-        <div id="stars2"></div>
-        <div id="stars3 "></div>
-      </div>
-
-      <button id="btn-sair-quiz" class="btn-sair">Sair</button>
-      <div class="container">
-        <div id="quiz-form" class="quiz-form">
-          <div class="upper-part">
-            <h1>Quiz God of War 2018</h1>
-            <div id="timer" class="timer">00:00:000</div>
+    <button id="btn-sair-quiz" class="btn-sair">Sair</button>
+    <div class="container">
+      <div id="quiz-form" class="quiz-form">
+        <div class="upper-part">
+          <h1>Quiz God of War 2018</h1>
+          <div id="timer" class="timer">00:00:000</div>
         </div>
-          <div class="quiz">
-            <div class="upper-question">
-              <h2 id="pergunta">Você é mimada?</h2>
-              <h3 id="questaoAtual">1/4</h3>
+        <div class="quiz">
+          <div class="upper-question">
+            <h2 id="pergunta">Você é mimada?</h2>
+            <h3 id="questaoAtual">1/4</h3>
+          </div>
+          <div id="respostas">
+            <button class="btn-resposta">Depende do dia</button>
+            <button class="btn-resposta">Sim, sou mimada</button>
+            <button class="btn-resposta">
+              Não sou mimada, sou muito independente
+            </button>
+            <button class="btn-resposta">Nenhuma das alternativas</button>
+          </div>
+          <div class="div-btn-proximo">
+            <button id="btn-proximo" class="btn-proximo">Próxima</button>
+          </div>
+          <div class="classificacao-container">
+
+            <div id="topico-div" class="topicos">
+              <div>Usuário</div>
+              <div class="tituloResultadoRanking">
+                <div>Pontuação</div>
+                <div>Tempo</div>
+              </div>
             </div>
-            <div id="respostas">
-              <button class="btn-resposta">Depende do dia</button>
-              <button class="btn-resposta">Sim, sou mimada</button>
-              <button class="btn-resposta">
-                Não sou mimada, sou muito independente
-              </button>
-              <button class="btn-resposta">Nenhuma das alternativas</button>
-            </div>
-            <div class="div-btn-proximo">
-              <button id="btn-proximo" class="btn-proximo">Próxima</button>
+
+            <div class="resultados-container">
+
+              <div id="tentativas">
+
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-  </body>
+</body>
+
 </html>
 
 <script src="quiz.js"></script>

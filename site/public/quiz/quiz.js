@@ -180,6 +180,8 @@ proximoBtn.addEventListener('click', () => {
         handleNextButton()
     } else {
         comecarQuiz()
+        tentativas_container.innerHTML = ''
+        topico_div.style.display =  'none'
     }
 })
 
@@ -343,6 +345,20 @@ function renderTentativa(){
 
 }
 
+function formatarTempo(milissegundos) {
+    var minutos = Math.floor(milissegundos / 60000);
+    var segundos = Math.floor((milissegundos % 60000) / 1000);
+    var milissegundosRestantes = milissegundos % 1000;
+  
+    var minutosFormatados = minutos.toString().padStart(2, '0');
+    var segundosFormatados = segundos.toString().padStart(2, '0');
+    var milissegundosFormatados = milissegundosRestantes.toString().padStart(3, '0');
+  
+    return minutosFormatados + ':' + segundosFormatados + '.' + milissegundosFormatados;
+  }
+
+const tentativas_container = document.querySelector('#tentativas')
+const topico_div = document.querySelector('#topico-div')
 
 async function selecionarMelhoresTentativas(idQuiz){
 
@@ -350,13 +366,13 @@ async function selecionarMelhoresTentativas(idQuiz){
         if (response.ok) {
             response.json().then(function (resposta) {
                 
-            
+
+                topico_div.style.display = 'flex'
                   for(i = 0; i<resposta.length; i++){
+
                       let usernameTentativa = resposta[i].username
                       let pontuacaoTentativa = resposta[i].pontuacao
                       let tempoTentativa = resposta[i].tempo
-
-                      const tentativas_container = document.querySelector('#tentativas')
 
                     const tentativa_div = document.createElement('div')
                     tentativa_div.id = 'tentativa-ranking'
@@ -364,25 +380,40 @@ async function selecionarMelhoresTentativas(idQuiz){
                     tentativas_container.appendChild(tentativa_div)
 
                     const username_div = document.createElement('div')
+                    username_div.classList.add('resultadoItem')
                     const resultados_div = document.createElement('div')
-
-                    username_div.classList.add('userRanking')
                     resultados_div.classList.add('resultadosRanking')
-
-                    tentativa_div.appendChild(resultados_div)
+                    
+                    
                     tentativa_div.appendChild(username_div)
+                    tentativa_div.appendChild(resultados_div)
 
+                
                     const pontuacao_div = document.createElement('div')
                     const tempo_div = document.createElement('div')
+
+                    pontuacao_div.classList.add('resultadoItem')
+                    tempo_div.classList.add('resultadoItem')
 
                     resultados_div.appendChild(pontuacao_div)
                     resultados_div.appendChild(tempo_div)
 
-                    username_div.innerHTML = `${usernameTentativa}`
+                    if(i == 0){
+                        username_div.innerHTML = ` 🏆 ${i + 1}st:  ${usernameTentativa}`
+                    }else if(i == 1){
+                        username_div.innerHTML = `🥈 ${i + 1}nd: ${usernameTentativa}`
+                    }else if( i == 2){
+                        username_div.innerHTML = `🥉 ${i + 1}rd: ${usernameTentativa}`
+                    }else{
+                        username_div.innerHTML = `<img src="http://www.emoticonr.com/design/yahoo/loser.gif"> ${i + 1}th: ${usernameTentativa}`
+                    }
                     pontuacao_div.innerHTML = `${pontuacaoTentativa}`
-                    tempo_div.innerHTML = `${tempoTentativa}`
+                    tempo_div.innerHTML = `${formatarTempo(tempoTentativa)}`
                       
                 }
+                const container_classificacao = document.querySelector('.classificacao-container')
+                container_classificacao.style.overflowY = 'scroll'
+                
              
             });
         } else {

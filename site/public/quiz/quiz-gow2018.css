@@ -150,14 +150,23 @@ body::-webkit-scrollbar{
 }
 
 
+
 .correta{
- background-color: #9aeabc;
-}
+    background-color: #00de60;
+    border-radius: 5px;
+   }
 
 .incorreta{
 background-color: #ff9393;
 }
 
+.verClassificacao{
+    font-size: 20px;
+    cursor: pointer;
+}
+.verClassificacao:hover{
+    border-bottom: #000000 2px solid;
+}
 
 .classificacao-container{
     width: 100%;
@@ -217,15 +226,22 @@ background-color: #ff9393;
 .resultadosRanking{
     display: flex;
     width: 25%;
-    justify-content: space-between;
-    font-size: 18px;
-}
-
-.resultadoItem{
     height: 50px;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 18px;
+    border-radius: 5px;
+    padding: 0 10px 0 10px;
+    
 }
 
 
+
+.tentativaAtual{
+    background-color: #e35d5d;
+    border-radius: 5px;
+ }
+ 
 
 
 

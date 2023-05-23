@@ -20,6 +20,16 @@ let questaoAtualPosicao = 0
 let pontuacao = 0
 let pontuacaoMediaDoQuiz 
 
+
+function randomizar() {
+    return (Math.round(Math.random())-0.5);
+}
+
+
+
+
+
+
 function comecarQuiz() {
     timer()
     questaoAtualPosicao = 0
@@ -33,9 +43,16 @@ function comecarQuiz() {
     } else if (body.id == 'quiz-gow2018-html') {
         idQuiz = 2
         perguntas = perguntasGow2018
+        
     } else if (body.id == 'quiz-gow3-html') {
-        idQuiz = 1
+          idQuiz = 1   
         perguntas = perguntasGow3
+    }
+
+    perguntas.sort(randomizar)
+
+    for(let i = 0; i< perguntas.length ; i++){
+         perguntas[i].alternativas.sort(randomizar)
     }
 
     mostrarPergunta()
@@ -373,6 +390,10 @@ async function selecionarMelhoresTentativas(idQuiz){
                       let usernameTentativa = resposta[i].username
                       let pontuacaoTentativa = resposta[i].pontuacao
                       let tempoTentativa = resposta[i].tempo
+                      let idTentativa = resposta[i].idTentativa
+
+
+                      
 
                     const tentativa_div = document.createElement('div')
                     tentativa_div.id = 'tentativa-ranking'
@@ -397,6 +418,13 @@ async function selecionarMelhoresTentativas(idQuiz){
 
                     resultados_div.appendChild(pontuacao_div)
                     resultados_div.appendChild(tempo_div)
+
+                    
+                    if(idTentativa == tentativaAtual){
+                        tentativa_div.classList.add('tentativaAtual') 
+                      }else{
+                        tentativa_div.classList.remove('tentativaAtual')
+                      }
 
                     if(i == 0){
                         username_div.innerHTML = ` 🏆 ${i + 1}st:  ${usernameTentativa}`

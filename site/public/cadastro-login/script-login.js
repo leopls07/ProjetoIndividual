@@ -37,9 +37,6 @@ login_erro.style.opacity = '1' ;
 }else if(!email_validation){ 
 login_erro.innerHTML = 'Email Inválido'
 login_erro.style.opacity = '1' ;
-}else if (!senha_validation){
-login_erro.innerHTML = 'Senha Inválida'
-login_erro.style.opacity = '1' 
 }else{
     // TUDO VÁLIDO
    doLogin();
@@ -81,7 +78,12 @@ function doLogin(){
 
         if(resposta.ok){
             return resposta.json()
-        }else{
+        }else if(resposta.status == 403){
+            console.log('deu 0 aqui ein')
+            login_erro.style.opacity = '1';
+            login_erro.innerHTML = `Email e/ou senha inválido(s)`
+        }
+        else{
             
             div_aviso.style.opacity = '1'
             resposta_aviso.style.color = 'red'
@@ -93,10 +95,7 @@ function doLogin(){
     
             console.log("Houve um erro ao tentar realizar o login!");
 
-            resposta.text().then(texto => {
-                console.error(texto);
-                
-            });
+           
         
         }
     }).then((dados)=>{
@@ -113,10 +112,7 @@ function doLogin(){
         window.location.href = '../index.html'
        },1500)
 
-    }).catch(function (erro) {
-        console.log(erro);
     })
-    
 }
 
 const img_icon_senha = document.querySelector('#img-icon-senha')

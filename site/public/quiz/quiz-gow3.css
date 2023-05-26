@@ -9,9 +9,10 @@
 
 body{
     background-color: rgb(0, 0, 0);
-    background-image: url(../assets/ragnarokBackground.jpg);
+    background-image: url('https://s2.glbimg.com/BfNmNgKXUTcTraJdl_wblsv6KDU=/0x0:1200x675/984x0/smart/filters:strip_icc()/i.s3.glbimg.com/v1/AUTH_08fbf48bc0524877943fe86e43087e7a/internal_photos/bs/2022/z/M/HL5EvQRBAvOtAn2Tz4Dw/gow-1.0.jpg');
     background-size: cover;
     background-repeat: no-repeat;
+    
     
 }
 

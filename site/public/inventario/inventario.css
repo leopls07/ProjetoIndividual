@@ -66,33 +66,84 @@ a{
     text-align: center;
     width: 100%;
     height: 100%;
-    color: #a2a1a1;
-    text-shadow: 1px 1px 3px #a2a1a1;
-    font-size: 26px;
+    font-size: 18px;
     font-weight: 600;
     transition: .3s;
-}
-
-.item-content:hover{
-    transform: scale(1.05);
-}
-
-.one{
-    border-radius: 10px;
-    color: #FFD700;
-   background-image: url('https://pm1.aminoapps.com/6834/fddc00e76659022c022aeada1065ddf8e009efb6v2_hq.jpg');
-   background-position: center;
-   background-size: cover;
 }
 
 
 .desc{
     width: 150px;
     height: 50px;
-    background-color: rgb(172, 172, 172);
+    background-color: rgb(255, 255, 255);
+    text-align: center;
     position: absolute;
+    border-radius: 5px;
     opacity: 0;
     transition: .5s;
+    user-select: none;
+    pointer-events: none;
 }
+
+
+
+.one, .two, .three, .four, .five, .six, .seven,.eight{
+    border-radius: 10px;
+    color: #FFD700;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+
+}
+
+.one{
+    background-image: url('./invassets/laminasdocaos.jpg');
+    filter: saturate(1.5);
+
+}
+
+.two{
+   background-image: url('./invassets/machadoleviatan.jpg');
+   background-size: contain;
+}
+
+.three{
+    background-image: url('./invassets/laminadoolimpo.jpg');
+    background-size: contain;
+    filter: saturate(2);
+    
+}
+.four{
+    background-image: url('./invassets/MjolnirThor.jpg');
+    background-size: 110%;
+    filter: saturate(2);
+
+}
+.five{
+    background-image: url('./invassets/laminadehades.jpg');
+    background-size: contain;
+
+
+}
+
+.six{
+    background-image: url('./invassets/lancadedraupnir.jpg');
+    background-size: contain;
+
+}
+
+.seven{
+    background-image: url('./invassets/espadadezeus.jpg');
+    background-size: contain;
+}
+.eight{
+    background-image: url('./invassets/faquinhadoatreus.jpg');
+    background-size: contain;
+
+}
+
+
+
+
 
 

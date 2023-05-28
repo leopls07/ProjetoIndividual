@@ -12,13 +12,20 @@ const div_item_container = document.querySelectorAll('div.one, div.two,div.three
 
 
 for(var i = 0; i< div_item_container.length; i++){
-    div_item_container[i].addEventListener('mouseenter', (e)=>{
+    const desc = document.createElement('div')
+    
+    if(i==0){
+        desc.innerHTML = 'ui'
+    }
+    div_item_container[i].addEventListener('mousemove', (e)=>{
         
         
-        var coordenadaX = e.x + 3
-        var coordenadaY = e.y -5
         
-        const desc = document.createElement('div')
+        var coordenadaX = e.x 
+        var coordenadaY = e.y + 22
+
+        console.log(e)
+        
         album_container.appendChild(desc)
         desc.classList.add('desc')
         desc.style.top = `${coordenadaY}px`
@@ -37,5 +44,6 @@ for(var i = 0; i< div_item_container.length; i++){
 
     div_item_container[i].addEventListener('mouseleave',(e)=>{
     album_container.removeChild(album_container.lastChild) 
+    desc.style.opacity = '0'
         })
 }

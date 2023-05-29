@@ -53,7 +53,7 @@ CREATE TABLE tentativa(
 CREATE TABLE inventario (
     idInventario int primary key AUTO_INCREMENT,
     fkUsuario int,
-    foreign key (fkUsuario) references usuario (idUsuario),
+    foreign key (fkUsuario) references usuario (idUsuario)
 );
 
 CREATE TABLE item(

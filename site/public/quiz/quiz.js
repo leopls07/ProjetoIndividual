@@ -180,6 +180,7 @@ let timerInterval;
 let minutos = 0;
 let segundos = 0;
 let milesimos = 0;
+let milesimosRealOficial = 0
 const divTimer = document.querySelector("#timer");
 
 function timer() {
@@ -216,6 +217,7 @@ function timer() {
     }
     divTimer.innerHTML = `${tempo}`;
     milesimos += 10;
+    milesimosRealOficial += 10;
   }, 10);
 }
 
@@ -259,7 +261,7 @@ async function inserirTentativa() {
       idUsuarioServer: idUsuario,
       idQuizServer: idQuiz,
       pontuacaoServer: pontuacao * 10,
-      tempoServer: tempoFinal,
+      tempoServer: milesimosRealOficial,
     }),
   })
     .then((resposta) => {
@@ -659,7 +661,7 @@ const perguntasRagnarok = [
       { resposta: "Dragões", correta: false },
       { resposta: "Gigantes", correta: false },
       { resposta: "Trolls", correta: false },
-      { resposta: "Todas as anteriores", correta: true },
+      { resposta: "Todas as alternativas", correta: true },
     ],
   },
   {

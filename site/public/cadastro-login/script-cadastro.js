@@ -66,7 +66,7 @@ cadastro_btn.addEventListener('click', () => {
 })
 
 
-function efetuarCadastro(){
+async function efetuarCadastro(){
     const div_aviso = document.querySelector('.aviso')
     const resposta_aviso = document.querySelector('.resposta-cadastro')
 
@@ -75,7 +75,7 @@ var emailVar = cadastro_email.value
 var senhaVar = cadastro_senha.value 
 
 
-fetch("/usuarios/cadastrar", {
+const cadastroUsuario = await fetch("/usuarios/cadastrar", {
     method: "POST",
     headers: {
         "Content-Type": "application/json"
@@ -89,45 +89,57 @@ fetch("/usuarios/cadastrar", {
     })
     
 }).then(function (resposta) {
-  
     
-    console.log("resposta: ", resposta);
     
     if (resposta.ok) {
-       console.log('OK')
-       return resposta.json()
+        console.log('OK')
+        return resposta.json()
     } else {
-
+        
         div_aviso.style.opacity = '1'
         resposta_aviso.style.color = 'red'
         resposta_aviso.innerHTML = 'Houve um erro ao realizar o cadastro!'
-
+        
         setTimeout(()=>{
             div_aviso.style.opacity = '0'
         },5000)
-
+        
         throw ("Houve um erro ao tentar realizar o cadastro!");
     }
     
-}).then(() => {
-
+}).then((res) => {
+    
     div_aviso.style.opacity = '1'
     resposta_aviso.style.color = 'green'
     resposta_aviso.innerHTML = 'Cadastro realizado com sucesso!'
 
     
-
-   setTimeout(() =>{
-       window.location.href = './login.html'
-   },1500)
-
+    setTimeout(() =>{
+        window.location.href = './login.html'
+    },1500)
+    return res
 }).catch(function (resposta) {
     console.log(`#ERRO: ${resposta}`);
 });
 
 
+const varCadastro = cadastroUsuario.insertId
+sessionStorage.setItem('idCadastro', varCadastro )
+cadastrarInventario(varCadastro)
+
+}
 
 
+  function cadastrarInventario(idCadastro){
+     fetch(`/inventarios/cadastrarInventario`, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+           fkUsuarioServer: idCadastro
+        })
+    })
 }
 
 

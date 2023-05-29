@@ -9,14 +9,22 @@ const album_container = document.querySelector('.album-container')
 const div_item_container = document.querySelectorAll('div.one, div.two,div.three ,div.four, div.five, div.six, div.seven, div.eight')
 
 
-
+var vetorDesc = [
+    'Lâmina do Caos',
+    'Machado Leviatã',
+    'Lâmina do Olimpo',
+    'Mjölnir ',
+    'Lâmina de Artemis',
+    'Lança de Draupnir',
+    'Espada de Zeus',
+    'Faquinha de Atreus'  
+]
 
 for(var i = 0; i< div_item_container.length; i++){
     const desc = document.createElement('div')
     
-    if(i==0){
-        desc.innerHTML = 'ui'
-    }
+  desc.innerHTML = vetorDesc[i]
+
     div_item_container[i].addEventListener('mousemove', (e)=>{
         
         

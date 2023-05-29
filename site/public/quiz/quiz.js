@@ -14,6 +14,7 @@ let questaoAtualPosicao = 0;
 let pontuacao = 0;
 let pontuacaoMediaDoQuiz;
 
+
 function randomizar() {
   return Math.round(Math.random()) - 0.5;
 }

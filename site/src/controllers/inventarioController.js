@@ -1,27 +1,48 @@
-var inventarioModel = require("../models/inventarioModel")
+var inventarioModel = require("../models/inventarioModel");
 
+function cadastrarInventario(req, res) {
+  var fkUsuario = req.body.fkUsuarioServer;
 
+  inventarioModel
+    .cadastrarInventario(fkUsuario)
+    .then((resultado) => {
+      if (resultado.length > 0) {
+        res.status(200).json(resultado);
+      } else {
+        res.status(204).send("Nenhum resultado encontrado!");
+      }
+    })
+    .catch(function (erro) {
+      console.log(erro);
+      console.log(
+        "Houve um erro.",
+        erro.sqlMessage
+      );
+      res.status(500).json(erro.sqlMessage);
+    });
+}
 
-function cadastrarInventario (req, res){
+function verificarInventario(req,res){
+    var idUser = req.params.idUsuario
 
-    var fkUsuario = req.body.fkUsuarioServer
-
-    inventarioModel.cadastrarInventario(fkUsuario).then((resultado)=>{
+    inventarioModel.verificarInventario(idUser).then((resultado)=>{
+      console.log('ResultP' + resultado)
         if (resultado.length > 0) {
             res.status(200).json(resultado);
-        } else {
-            res.status(204).send("Nenhum resultado encontrado!")
-        }
+          } else {
+            res.status(204).send("Nenhum resultado encontrado!");
+          }
     }).catch(function (erro) {
         console.log(erro);
-        console.log("Houve um erro ao buscar as ultimas medidas.", erro.sqlMessage);
+        console.log(
+          "Houve um erro.",
+          erro.sqlMessage
+        );
         res.status(500).json(erro.sqlMessage);
-    });  
-
-
-    }
-
+      });
+}
 
 module.exports = {
-        cadastrarInventario
-    }
+  cadastrarInventario,
+  verificarInventario
+};

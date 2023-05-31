@@ -11,6 +11,15 @@ function cadastrarInventario(fkUsuario){
 }
 
 
+function verificarInventario(idUser){
+    var instrucao = `
+    select inventarioItem.fkInventario, inventarioItem.fkItem, item.nomeItem, usuario.idUsuario from inventarioItem
+     join item on fkItem = idItem join  inventario on fkInventario = idInventario join usuario  on fkUsuario = idUsuario where fkUsuario = ${idUser };`
+
+     return database.executar(instrucao)
+}   
+
 module.exports ={
-    cadastrarInventario
+    cadastrarInventario,
+    verificarInventario
 }

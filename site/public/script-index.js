@@ -46,6 +46,28 @@ if(statusUsuario == false){
 verificarSeEstaLogado()
 
 
+const btn_inventario = document.querySelector('#btnInventario')
+
+
+btn_inventario.addEventListener('click',()=>{
+    if(statusUsuario == false){
+        div_aviso.style.opacity = '1'
+        resposta_aviso.innerHTML = 'Logue para ter acesso'
+        setTimeout(()=>{
+            div_aviso.style.opacity = '0'
+        },1000)
+    }else{
+        
+            window.location.href = './inventario/inventario.html'
+       
+    }
+})
+
+
+
+
+
+
 
 btn_sair.addEventListener('click',()=>{
 

@@ -58,9 +58,15 @@ CREATE TABLE inventario (
 
 CREATE TABLE item(
     idItem int primary key AUTO_INCREMENT,
+    nomeItem VARCHAR(255)
+);
+
+CREATE TABLE inventarioItem (
     fkInventario int,
+    fkItem int,
     foreign key (fkInventario) references inventario (idInventario),
-    nomeItem VARCHAR(50)
+    foreign key (fkItem) references item (idItem),
+    primary key (fkInventario, fkItem)
 );
 
 

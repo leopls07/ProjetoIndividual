@@ -185,6 +185,8 @@ const divTimer = document.querySelector("#timer");
 
 function timer() {
   timerInterval = setInterval(() => {
+    milesimos += 10;
+    milesimosRealOficial += 10;
     if (milesimos < 10) {
       if (segundos < 10) {
         var tempo = `${minutos} : 0${segundos} :  00${milesimos}`;
@@ -216,8 +218,6 @@ function timer() {
       alert(":( cabo o quiz né");
     }
     divTimer.innerHTML = `${tempo}`;
-    milesimos += 10;
-    milesimosRealOficial += 10;
   }, 10);
 }
 
@@ -266,6 +266,7 @@ async function inserirTentativa() {
   })
     .then((resposta) => {
       if (resposta.ok) {
+        milesimosRealOficial = 0
         return resposta.json();
       }
     })
@@ -282,19 +283,13 @@ async function pegarPontuacaoMedia(idQuiz) {
     .then((response) => {
       if (response.ok) {
         response.json().then(function (resposta) {
-          // console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
           pontuacaoMediaDoQuiz = parseFloat(resposta[0].media).toFixed(2);
-          //  console.log(pontuacaoMediaDoQuiz + 'Pontuacao var')
-          //  console.log(resposta[0].media)
           resposta.reverse();
         });
       } else {
         console.error("Nenhum dado encontrado ou erro na API");
       }
     })
-    .catch(function (error) {
-      console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
-    });
 }
 
 function renderTentativa() {
@@ -455,9 +450,9 @@ const perguntasGow3 = [
     pergunta: "Quem é o primeiro deus que Kratos enfrenta?",
     alternativas: [
         { resposta: "Hades", correta: false },
-        { resposta: "Hermes", correta: true },
+        { resposta: "Hermes", correta: false },
         { resposta: "Zeus", correta: false },
-      { resposta: "Poseidon", correta: false },
+      { resposta: "Poseidon", correta: true },
     ],
   },
   {
@@ -481,9 +476,9 @@ const perguntasGow3 = [
   {
     pergunta: "Qual é o nome da arma mágica que Kratos recebe de Hefesto",
     alternativas: [
-      { resposta: "Correntes de Nêmesis", correta: false },
+      { resposta: "Chicote de Nêmesis", correta: false },
       { resposta: "Clava de Hades", correta: false },
-      { resposta: "Martelo de Hefesto", correta: true },
+      { resposta: "Martelo de Hefesto", correta: false },
       { resposta: "Flechas de Apolo", correta: false },
     ],
   },
@@ -624,7 +619,7 @@ const perguntasGow2018 = [
       { resposta: "Para entregar as Lâminas para Atreus", correta: false },
       {
         resposta:
-          "Para poder enfrentar o frio dos ventos de helheim e derrotar o guardião do reino para sarvar Atreus",
+          "Para poder enfrentar o frio dos ventos de helheim e derrotar o guardião do reino para salvar Atreus",
         correta: true,
       },
     ],

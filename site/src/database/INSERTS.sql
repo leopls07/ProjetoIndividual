@@ -13,3 +13,14 @@ insert into quiz values
 (1,'Quiz Gow 3',10),
 (2,'Quiz Gow 2018',10),
 (3,'Quiz Gow Ragnarok',10);
+
+
+INSERT INTO item (nomeItem) VALUES 
+('Lamina do Caos'),
+('Machado Leviatã'),
+('Lamina do Olimpo'),
+('Mjolnir'),
+('Lamina de Artemis'),
+('Lança de Draupnir'),
+('Espada de Zeus'),
+('Faca de Atreus');

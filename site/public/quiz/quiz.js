@@ -689,4 +689,34 @@ const perguntasRagnarok = [
   
 ];
 
-comecarQuiz();
+const div_confirmacao_comeco = document.querySelector('#div-confirmacao-quiz')
+const btn_confirmar_comeco = document.querySelector('#btn-confirmar')
+const btn_cancelar_comeco = document.querySelector('#btn-cancelar-comeco')
+const span_tempo_comeco = document.querySelector('#tempo-regressivo')
+function confirmacaoQuiz(){
+  div_confirmacao_comeco.style.opacity = "1";
+  div_confirmacao_comeco.style.display = "block";
+  divBlur.style.filter = "blur(4px)";
+
+  btn_confirmar_comeco.addEventListener('click',()=>{
+    var count = 3;
+
+    var contagemRegressiva = setInterval(()=>{
+      if(count == 0){
+        clearInterval(contagemRegressiva)
+        div_confirmacao_comeco.style.opacity = "0";
+        div_confirmacao_comeco.style.display = "none";
+        divBlur.style.filter = "";
+        comecarQuiz();
+      }
+      span_tempo_comeco.innerHTML = `${count}`
+      count--
+    },1000)  
+  })
+
+  btn_cancelar_comeco.addEventListener('click',()=>{
+    window.location.href = '/'
+  })
+}
+
+confirmacaoQuiz();

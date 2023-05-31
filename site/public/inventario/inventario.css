@@ -153,49 +153,49 @@ a{
 .a{
     background-image: url('./invassets/laminasdocaos.jpg');
     filter: saturate(1.5);
-    filter: grayscale(1) opacity(.2);;
+    filter: grayscale(1) opacity(.6) blur(3px); 
 }
 
 .b{
    background-image: url('./invassets/machadoleviatan.jpg');
    background-size: contain;
-   filter: grayscale(1) opacity(.2);;
+   filter: grayscale(1) opacity(.6) blur(3px);
 }
 
 .c{
     background-image: url('./invassets/laminadoolimpo.jpg');
     background-size: contain;
     filter: saturate(2);
-    filter: grayscale(1) opacity(.2);;
+    filter: grayscale(1) opacity(.6) blur(3px);
 }
 .d{
     background-image: url('./invassets/MjolnirThor.jpg');
     background-size: 110%;
     filter: saturate(2);
-    filter: grayscale(1) opacity(.2);;
+    filter: grayscale(1) opacity(.6) blur(3px);
 }
 .e{
     background-image: url('./invassets/laminadehades.jpg');
     background-size: contain;
-    filter: grayscale(1) opacity(.2);
+    filter: grayscale(1) opacity(.6) blur(3px)
 
 }
 
 .f{
     background-image: url('./invassets/lancadedraupnir.jpg');
     background-size: contain;
-    filter: grayscale(1) opacity(.2);;
+    filter: grayscale(1) opacity(.6) blur(3px);
 }
 
 .g{
     background-image: url('./invassets/espadadezeus.jpg');
     background-size: contain;
-    filter: grayscale(1) opacity(.2);;
+    filter: grayscale(1) opacity(.6) blur(3px);
 }
 .h{
     background-image: url('./invassets/faquinhadoatreus.jpg');
     background-size: contain;
-    filter: grayscale(1) opacity(.2);;
+    filter: grayscale(1) opacity(.6) blur(3px);
 
 }
 

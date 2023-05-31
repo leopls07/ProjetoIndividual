@@ -20,7 +20,7 @@ const idUsuario = sessionStorage.getItem('idUsuario')
   let itens = []
   let itensInventerio = await fetch(`/inventarios/verificar/${idUsuario}`,{cache:"no-store"}).then((res)=>{
      if(res.status == 204){
-      alert('No items')
+      // Sem itens :( 
       return 
      }    
     if(res.ok){
@@ -30,7 +30,6 @@ const idUsuario = sessionStorage.getItem('idUsuario')
 
     
       for(i=0 ; i<data.length; i++){
-          console.log(data[i])
           itens.push(data[i])
       }
       for(i=0; i<itens.length; i++){

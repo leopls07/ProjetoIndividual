@@ -93,6 +93,15 @@ a{
     pointer-events: none;
 }
 
+.aparecido{
+    display: block;
+    opacity: 1;
+}
+.desaparecido{
+    display: none;
+    opacity: 0;
+}
+
 
 
 .item-content{

@@ -19,7 +19,16 @@ function verificarInventario(idUser){
      return database.executar(instrucao)
 }   
 
+function cadastrarItem(fkInventario,fkItem){
+    var instrucao = `
+    INSERT INTO inventarioItem VALUES (${fkInventario},${fkItem});`
+
+    return database.executar(instrucao)
+
+}
+
 module.exports ={
     cadastrarInventario,
-    verificarInventario
+    verificarInventario,
+    cadastrarItem
 }

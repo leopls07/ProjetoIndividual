@@ -14,5 +14,9 @@ router.post("/cadastrarInventario", function (req, res) {
 router.get("/verificar/:idUsuario", function (req,res){
     inventarioController.verificarInventario(req,res)
 })
+
+router.post("/cadastrarItem", function(req,res){
+    inventarioController.cadastrarItem(req,res)
+})
 module.exports = router;
 

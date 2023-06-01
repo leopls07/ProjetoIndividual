@@ -7,13 +7,12 @@ const questaoAtualElement = document.querySelector("#questaoAtual");
 const quizFormElement = document.querySelector("#quiz-form");
 const body = document.querySelector("body");
 
-let username = sessionStorage.getItem("username");
-let idUsuario = sessionStorage.getItem("idUsuario");
+const username = sessionStorage.getItem("username");
+const idUsuario = sessionStorage.getItem("idUsuario");
 let idQuiz; // id 1 = gow 3 / id 2 = gow 2018 / id 3 = gow ragnarok
 let questaoAtualPosicao = 0;
 let pontuacao = 0;
 let pontuacaoMediaDoQuiz;
-
 
 function randomizar() {
   return Math.round(Math.random()) - 0.5;
@@ -104,6 +103,7 @@ function selecionarResposta(e) {
 
 async function mostrarPontuacao() {
   resetarQuestoesAnteriores();
+
   selecionarMelhoresTentativas(idQuiz);
 
   minutos = 0;
@@ -180,7 +180,7 @@ let timerInterval;
 let minutos = 0;
 let segundos = 0;
 let milesimos = 0;
-let milesimosRealOficial = 0
+let milesimosRealOficial = 0;
 const divTimer = document.querySelector("#timer");
 
 function timer() {
@@ -266,7 +266,7 @@ async function inserirTentativa() {
   })
     .then((resposta) => {
       if (resposta.ok) {
-        milesimosRealOficial = 0
+        milesimosRealOficial = 0;
         return resposta.json();
       }
     })
@@ -279,41 +279,18 @@ async function inserirTentativa() {
 }
 
 async function pegarPontuacaoMedia(idQuiz) {
-  await fetch(`/tentativas/selecionarMedia/${idQuiz}`, { cache: "no-store" })
-    .then((response) => {
-      if (response.ok) {
-        response.json().then(function (resposta) {
-          pontuacaoMediaDoQuiz = parseFloat(resposta[0].media).toFixed(2);
-          resposta.reverse();
-        });
-      } else {
-        console.error("Nenhum dado encontrado ou erro na API");
-      }
-    })
-}
-
-function renderTentativa() {
-  const tentativas_container = document.querySelector("#tentativas");
-
-  const tentativa_div = document.createElement("div");
-  tentativa_div.id = "tentativa-ranking";
-  tentativa_div.classList.add("tentativa-ranking");
-  tentativas_container.appendChild(tentativa_div);
-
-  const username_div = document.createElement("div");
-  const resultados_div = document.createElement("div");
-
-  username_div.classList.add("userRanking");
-  resultados_div.classList.add("resultadosRanking");
-
-  tentativa_div.appendChild(resultados_div);
-  tentativa_div.appendChild(username_div);
-
-  const pontuacao_div = document.createElement("div");
-  const tempo_div = document.createElement("div");
-
-  resultados_div.appendChild(pontuacao_div);
-  resultados_div.appendChild(tempo_div);
+  await fetch(`/tentativas/selecionarMedia/${idQuiz}`, {
+    cache: "no-store",
+  }).then((response) => {
+    if (response.ok) {
+      response.json().then(function (resposta) {
+        pontuacaoMediaDoQuiz = parseFloat(resposta[0].media).toFixed(2);
+        resposta.reverse();
+      });
+    } else {
+      console.error("Nenhum dado encontrado ou erro na API");
+    }
+  });
 }
 
 function formatarTempo(milissegundos) {
@@ -334,6 +311,9 @@ function formatarTempo(milissegundos) {
 
 const tentativas_container = document.querySelector("#tentativas");
 const topico_div = document.querySelector("#topico-div");
+
+let itensDisponiveis = []
+let itemGanho
 
 async function selecionarMelhoresTentativas(idQuiz) {
   await fetch(`/tentativas/selecionarMelhoresTentativas/${idQuiz}`, {
@@ -371,7 +351,19 @@ async function selecionarMelhoresTentativas(idQuiz) {
             resultados_div.appendChild(pontuacao_div);
             resultados_div.appendChild(tempo_div);
 
+            let idUsuarioTentativa = resposta[i].fkUsuario;
             if (idTentativa == tentativaAtual) {
+              if (i == 0) {
+                // AQUI EU DESCUBRO SE A TENTATIVA ATUAL É O PRIMEIRO LUGAR SE FOR, GANHA UM ITEM
+                itemGanho = itensDisponiveis.sort(randomizar)[0]
+                console.log(itemGanho)
+                if(itensDisponiveis.length != 0){
+                  inserirItemInventario(idUsuario,itemGanho)
+                  alert('PARABENS VOCE FICOU EM PRIMEIRO E GANHOU O ITEM ' + itemGanho)
+                }else{
+                  alert('Ja tem todos os itens')
+                }
+              }
               tentativa_div.classList.add("tentativaAtual");
             } else {
               tentativa_div.classList.remove("tentativaAtual");
@@ -404,6 +396,60 @@ async function selecionarMelhoresTentativas(idQuiz) {
       console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
     });
 }
+async function verificarInventario(idUsuario) {
+  let itens = [];
+  let nomeItens = []
+  let itensAdquiridos = [];
+  itensDisponiveis = [1,2,3,4,5,6,7,8];
+  await fetch(`/inventarios/verificar/${idUsuario}`, {
+    cache: "no-store",
+  })
+    .then((res) => {
+      if (res.status == 204) {
+        // Sem itens :(
+        return;
+      }
+      if (res.ok) {
+        return res.json();
+      }
+    })
+    .then((data) => {
+      if(data == undefined){return}
+      for (var i = 0; i < data.length; i++) {
+        itens.push(data[i]);
+      }
+      for (var i = 0; i < itens.length; i++) {
+        let fkItemPercorrido = itens[i].fkItem;
+        
+        for (var j = 1; j <= 8; j++) {
+          if (fkItemPercorrido == j) {
+            itensAdquiridos.push(fkItemPercorrido);
+          
+          }
+        }
+      }
+
+      for(var i = 0; i< itensAdquiridos.length; i++){
+         if(itensDisponiveis.indexOf(itensAdquiridos[i]) != -1 ){
+          itensDisponiveis.splice(itensDisponiveis.indexOf(itensAdquiridos[i]),1)
+         }
+      }
+
+      console.log("Itens adquiridos " + itensAdquiridos);
+      console.log("Itens não adquiridos " + itensDisponiveis);
+    })
+    .catch((e) => {
+      console.error(e);
+    });
+}
+
+async function inserirItemInventario(idUsuario,itemGanho){
+
+  await fetch(`/inventarios/cadastrarItem/?fkInventario=${idUsuario}&fkItem=${itemGanho}`,{method: 'POST'})
+  .catch((e)=>{
+    console.error(e)
+  })
+}
 
 const perguntasGow3 = [
   {
@@ -434,7 +480,10 @@ const perguntasGow3 = [
       { resposta: "Salvar sua família", correta: false },
       { resposta: "Derrotar todos os deuses do Olimpo", correta: false },
       { resposta: "Vingar a morte de sua esposa", correta: true },
-      {resposta: "Encontrar o artefato místico conhecido como Olho de Apolo",correta: false},
+      {
+        resposta: "Encontrar o artefato místico conhecido como Olho de Apolo",
+        correta: false,
+      },
     ],
   },
   {
@@ -449,9 +498,9 @@ const perguntasGow3 = [
   {
     pergunta: "Quem é o primeiro deus que Kratos enfrenta?",
     alternativas: [
-        { resposta: "Hades", correta: false },
-        { resposta: "Hermes", correta: false },
-        { resposta: "Zeus", correta: false },
+      { resposta: "Hades", correta: false },
+      { resposta: "Hermes", correta: false },
+      { resposta: "Zeus", correta: false },
       { resposta: "Poseidon", correta: true },
     ],
   },
@@ -476,14 +525,15 @@ const perguntasGow3 = [
   {
     pergunta: "Qual é o nome da arma mágica que Kratos recebe de Hefesto",
     alternativas: [
-      { resposta: "Chicote de Nêmesis", correta: false },
+      { resposta: "Chicote de Nêmesis", correta: true },
       { resposta: "Clava de Hades", correta: false },
       { resposta: "Martelo de Hefesto", correta: false },
       { resposta: "Flechas de Apolo", correta: false },
     ],
   },
   {
-    pergunta: "Qual é o nome do artefato divino que Kratos adquire no início do jogo e que lhe concede poderes especiais?",
+    pergunta:
+      "Qual é o nome do artefato divino que Kratos adquire no início do jogo e que lhe concede poderes especiais?",
     alternativas: [
       { resposta: "Cabeça de Medusa", correta: false },
       { resposta: "Amuleto de Afrodite", correta: false },
@@ -505,8 +555,15 @@ const perguntasGow3 = [
     alternativas: [
       { resposta: "Ele se torna o novo governante do Olimpo.", correta: false },
       { resposta: "Ele se sacrifica para salvar a humanidade.", correta: true },
-      { resposta: "Ele é condenado a uma eternidade de tormento no Tártaro.", correta: false },
-      { resposta: "Ele desaparece misteriosamente, e aparece na mitologia nórdica", correta: false },
+      {
+        resposta: "Ele é condenado a uma eternidade de tormento no Tártaro.",
+        correta: false,
+      },
+      {
+        resposta:
+          "Ele desaparece misteriosamente, e aparece na mitologia nórdica",
+        correta: false,
+      },
     ],
   },
 ];
@@ -627,56 +684,63 @@ const perguntasGow2018 = [
 ];
 
 const perguntasRagnarok = [
-  {
-    pergunta: "O que é o Ragnarok?",
-    alternativas: [
-      { resposta: "É o jogo do god of war", correta: false },
-      { resposta: "É o inverno da mitologia nórdica", correta: false },
-      { resposta: "É  o fim do mundo na mitologia nórdica", correta: true },
-      {
-        resposta:
-          "É quando odin tenta matar kratos em uma batalha por conta de suas atitudes passadas",
-        correta: false,
-      },
-    ],
-  },
+  // {
+  //   pergunta: "O que é o Ragnarok?",
+  //   alternativas: [
+  //     { resposta: "É o jogo do god of war", correta: false },
+  //     { resposta: "É o inverno da mitologia nórdica", correta: false },
+  //     { resposta: "É  o fim do mundo na mitologia nórdica", correta: true },
+  //     {
+  //       resposta:
+  //         "É quando odin tenta matar kratos em uma batalha por conta de suas atitudes passadas",
+  //       correta: false,
+  //     },
+  //   ],
+  // },
 
-  {
-    pergunta: "Quantos anos tem Atreus durante o jogo?",
-    alternativas: [
-      { resposta: "15", correta: false },
-      { resposta: "14", correta: true },
-      { resposta: "16", correta: false },
-      { resposta: "13", correta: false },
-    ],
-  },
-  {
-    pergunta: "Quais criaturas mitológicas estão presentes em God of War Ragnarok",
-    alternativas: [
-      { resposta: "Dragões", correta: false },
-      { resposta: "Gigantes", correta: false },
-      { resposta: "Trolls", correta: false },
-      { resposta: "Todas as alternativas", correta: true },
-    ],
-  },
-  {
-    pergunta: "Qual é o objetivo principal de Kratos e Atreus em God of War Ragnarok",
-    alternativas: [
-      { resposta: "Trazer os poderes do ragnarok assim salvando sua esposa Faye", correta: false },
-      { resposta: "Destruir todos os deuses nórdicos", correta: false },
-      { resposta: "Dominar os reinos nórdicos", correta: false },
-      { resposta: "Evitar o Ragnarok e salvar a humanidade", correta: true },
-    ],
-  },
-  {
-    pergunta: "Quem é o irmão de Thor que Kratos e Atreus encontram em sua jornada?",
-    alternativas: [
-      { resposta: "Magni", correta: false },
-      { resposta: "Freyr", correta: false },
-      { resposta: "Tyr", correta: false },
-      { resposta: "Modi", correta: true },
-    ],
-  },
+  // {
+  //   pergunta: "Quantos anos tem Atreus durante o jogo?",
+  //   alternativas: [
+  //     { resposta: "15", correta: false },
+  //     { resposta: "14", correta: true },
+  //     { resposta: "16", correta: false },
+  //     { resposta: "13", correta: false },
+  //   ],
+  // },
+  // {
+  //   pergunta:
+  //     "Quais criaturas mitológicas estão presentes em God of War Ragnarok",
+  //   alternativas: [
+  //     { resposta: "Dragões", correta: false },
+  //     { resposta: "Gigantes", correta: false },
+  //     { resposta: "Trolls", correta: false },
+  //     { resposta: "Todas as alternativas", correta: true },
+  //   ],
+  // },
+  // {
+  //   pergunta:
+  //     "Qual é o objetivo principal de Kratos e Atreus em God of War Ragnarok",
+  //   alternativas: [
+  //     {
+  //       resposta:
+  //         "Trazer os poderes do ragnarok assim salvando sua esposa Faye",
+  //       correta: false,
+  //     },
+  //     { resposta: "Destruir todos os deuses nórdicos", correta: false },
+  //     { resposta: "Dominar os reinos nórdicos", correta: false },
+  //     { resposta: "Evitar o Ragnarok e salvar a humanidade", correta: true },
+  //   ],
+  // },
+  // {
+  //   pergunta:
+  //     "Quem é o irmão de Thor que Kratos e Atreus encontram em sua jornada?",
+  //   alternativas: [
+  //     { resposta: "Magni", correta: false },
+  //     { resposta: "Freyr", correta: false },
+  //     { resposta: "Tyr", correta: false },
+  //     { resposta: "Modi", correta: true },
+  //   ],
+  // },
   {
     pergunta: "Qual é a nova habilidade de Atreus?",
     alternativas: [
@@ -686,37 +750,37 @@ const perguntasRagnarok = [
       { resposta: "Poder de cura", correta: false },
     ],
   },
-  
 ];
 
-const div_confirmacao_comeco = document.querySelector('#div-confirmacao-quiz')
-const btn_confirmar_comeco = document.querySelector('#btn-confirmar')
-const btn_cancelar_comeco = document.querySelector('#btn-cancelar-comeco')
-const span_tempo_comeco = document.querySelector('#tempo-regressivo')
-function confirmacaoQuiz(){
+const div_confirmacao_comeco = document.querySelector("#div-confirmacao-quiz");
+const btn_confirmar_comeco = document.querySelector("#btn-confirmar");
+const btn_cancelar_comeco = document.querySelector("#btn-cancelar-comeco");
+const span_tempo_comeco = document.querySelector("#tempo-regressivo");
+function confirmacaoQuiz() {
+  verificarInventario(idUsuario);
   div_confirmacao_comeco.style.opacity = "1";
   div_confirmacao_comeco.style.display = "block";
   divBlur.style.filter = "blur(4px)";
 
-  btn_confirmar_comeco.addEventListener('click',()=>{
+  btn_confirmar_comeco.addEventListener("click", () => {
     var count = 3;
 
-    var contagemRegressiva = setInterval(()=>{
-      if(count == 0){
-        clearInterval(contagemRegressiva)
+    var contagemRegressiva = setInterval(() => {
+      if (count == 0) {
+        clearInterval(contagemRegressiva);
         div_confirmacao_comeco.style.opacity = "0";
         div_confirmacao_comeco.style.display = "none";
         divBlur.style.filter = "";
         comecarQuiz();
       }
-      span_tempo_comeco.innerHTML = `${count}`
-      count--
-    },1000)  
-  })
+      span_tempo_comeco.innerHTML = `${count}`;
+      count--;
+    }, 1000);
+  });
 
-  btn_cancelar_comeco.addEventListener('click',()=>{
-    window.location.href = '/'
-  })
+  btn_cancelar_comeco.addEventListener("click", () => {
+    window.location.href = "/";
+  });
 }
 
 confirmacaoQuiz();

@@ -14,6 +14,11 @@ let questaoAtualPosicao = 0;
 let pontuacao = 0;
 let pontuacaoMediaDoQuiz;
 
+
+window.onload = ()=>{
+  window.scrollTo(0,0)
+}
+
 function randomizar() {
   return Math.round(Math.random()) - 0.5;
 }
@@ -356,13 +361,77 @@ async function selecionarMelhoresTentativas(idQuiz) {
               if (i == 0  && pontuacaoTentativa >= 10) {
                 // AQUI EU DESCUBRO SE A TENTATIVA ATUAL É O PRIMEIRO LUGAR SE FOR, GANHA UM ITEM
                 itemGanho = itensDisponiveis.sort(randomizar)[0]
-                console.log(itemGanho)
-                if(itensDisponiveis.length != 0){
-                  inserirItemInventario(idUsuario,itemGanho)
-                  alert('PARABENS VOCE FICOU EM PRIMEIRO E GANHOU O ITEM ' + itemGanho)
-                  verificarInventario(idUsuario)
-                }else{
+                console.log(itemGanho + 'Item ganho')
+                if(itensDisponiveis.length == 0){
                   alert('Ja tem todos os itens')
+                }else{
+                  inserirItemInventario(idUsuario,itemGanho)
+                  setTimeout(()=>{
+                    verificarInventario(idUsuario);
+                  },1000)
+                  const container_card = document.querySelector('#container-card')
+                  const content_card = document.querySelector('#card-content')
+
+                  switch(itemGanho){
+                    case 1:
+                      content_card.style.backgroundImage= 'url("../inventario/invassets/laminasdocaos.jpg")'
+                      content_card.style.backgroundSize = 'cover'
+                      break
+                    case 2:
+                      content_card.style.backgroundImage= 'url("../inventario/invassets/machadoleviatan.jpg")'
+                      content_card.style.backgroundSize = 'contain'
+                      break
+                      case 3:
+                      content_card.style.backgroundImage= 'url("../inventario/invassets/laminadoolimpo.jpg")'
+                      content_card.style.backgroundSize = 'contain'
+                      break
+                      case 4:
+                      content_card.style.backgroundImage= 'url("../inventario/invassets/MjolnirThor.jpg")'
+                      content_card.style.backgroundSize = 'contain'
+                      break
+                      case 5:
+                      content_card.style.backgroundImage= 'url("../inventario/invassets/laminadehades.jpg")'
+                      content_card.style.backgroundSize = 'contain'
+                      break
+                      case 6:
+                      content_card.style.backgroundImage= 'url("../inventario/invassets/lancadedraupnir.jpg")'
+                      content_card.style.backgroundSize = 'contain'
+                      break
+                      case 7:
+                      content_card.style.backgroundImage= 'url("../inventario/invassets/espadadezeus.jpg")'
+                      content_card.style.backgroundSize = 'contain'
+                      break
+                      case 8:
+                      content_card.style.backgroundImage= 'url("../inventario/invassets/faquinhadoatreus.jpg")'
+                      content_card.style.backgroundSize = 'contain'
+                      
+                      break
+                  }
+
+                  
+
+
+                  container_card.style.display = 'block'
+                  container_card.style.opacity = '1'
+                  divBlur.style.filter = 'blur(4px)'
+                  quizFormElement.style.pointerEvents = 'none'
+
+                const btnInventario = document.querySelector('#btn-ir-inventario')
+                const btnContinuar = document.querySelector('#btn-continuar-quiz')
+
+                btnInventario.addEventListener('click',()=>{
+                    window.location.href = '../inventario/inventario.html' 
+                    container_card.style.display = 'none'
+                    container_card.style.opacity = '0'
+                    quizFormElement.style.pointerEvents = ''
+                })
+                btnContinuar.addEventListener('click',()=>{
+                  container_card.style.display = 'none'
+                  container_card.style.opacity = '0'
+                  divBlur.style.filter = ''
+                  quizFormElement.style.pointerEvents = ''
+                })
+                  verificarInventario(idUsuario)
                 }
               }
               tentativa_div.classList.add("tentativaAtual");
@@ -399,7 +468,6 @@ async function selecionarMelhoresTentativas(idQuiz) {
 }
 async function verificarInventario(idUsuario) {
   let itens = [];
-  let nomeItens = []
   let itensAdquiridos = [];
   itensDisponiveis = [1,2,3,4,5,6,7,8];
   await fetch(`/inventarios/verificar/${idUsuario}`, {
@@ -766,11 +834,14 @@ function confirmacaoQuiz() {
   btn_confirmar_comeco.addEventListener("click", () => {
     var count = 3;
 
+      document.body.style.pointerEvents = 'none'
+
     var contagemRegressiva = setInterval(() => {
       if (count == 0) {
         clearInterval(contagemRegressiva);
         div_confirmacao_comeco.style.opacity = "0";
         div_confirmacao_comeco.style.display = "none";
+        document.body.style.pointerEvents = ''
         divBlur.style.filter = "";
         comecarQuiz();
       }

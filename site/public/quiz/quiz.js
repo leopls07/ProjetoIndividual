@@ -313,9 +313,10 @@ const tentativas_container = document.querySelector("#tentativas");
 const topico_div = document.querySelector("#topico-div");
 
 let itensDisponiveis = []
-let itemGanho
+let itemGanho = []
 
 async function selecionarMelhoresTentativas(idQuiz) {
+  itemGanho = []
   await fetch(`/tentativas/selecionarMelhoresTentativas/${idQuiz}`, {
     cache: "no-store",
   })
@@ -351,15 +352,15 @@ async function selecionarMelhoresTentativas(idQuiz) {
             resultados_div.appendChild(pontuacao_div);
             resultados_div.appendChild(tempo_div);
 
-            let idUsuarioTentativa = resposta[i].fkUsuario;
             if (idTentativa == tentativaAtual) {
-              if (i == 0) {
+              if (i == 0  && pontuacaoTentativa >= 10) {
                 // AQUI EU DESCUBRO SE A TENTATIVA ATUAL É O PRIMEIRO LUGAR SE FOR, GANHA UM ITEM
                 itemGanho = itensDisponiveis.sort(randomizar)[0]
                 console.log(itemGanho)
                 if(itensDisponiveis.length != 0){
                   inserirItemInventario(idUsuario,itemGanho)
                   alert('PARABENS VOCE FICOU EM PRIMEIRO E GANHOU O ITEM ' + itemGanho)
+                  verificarInventario(idUsuario)
                 }else{
                   alert('Ja tem todos os itens')
                 }

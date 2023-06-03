@@ -411,8 +411,7 @@ async function selecionarMelhoresTentativas(idQuiz) {
                   
 
 
-                  container_card.style.display = 'block'
-                  container_card.style.opacity = '1'
+                  container_card.classList.add('container-card-ativado')
                   divBlur.style.filter = 'blur(4px)'
                   quizFormElement.style.pointerEvents = 'none'
 
@@ -424,12 +423,14 @@ async function selecionarMelhoresTentativas(idQuiz) {
                     container_card.style.display = 'none'
                     container_card.style.opacity = '0'
                     quizFormElement.style.pointerEvents = ''
+                    container_card.classList.remove('container-card-ativado')
                 })
                 btnContinuar.addEventListener('click',()=>{
                   container_card.style.display = 'none'
                   container_card.style.opacity = '0'
                   divBlur.style.filter = ''
                   quizFormElement.style.pointerEvents = ''
+                  container_card.classList.remove('container-card-ativado')
                 })
                   verificarInventario(idUsuario)
                 }

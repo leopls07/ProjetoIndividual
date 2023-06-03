@@ -7,6 +7,17 @@ const album_container = document.querySelector(".album-container");
 const div_item_container = document.querySelectorAll(".item-content");
 const containerItemIndividual = document.querySelectorAll(".item-container");
 
+window.onload = ()=>{
+  div_item_container.forEach(element => {
+    element.classList.remove('item-contentAfter')
+    element.classList.add('item-contentAfter')
+  });
+
+
+}
+
+
+
 const idUsuario = sessionStorage.getItem("idUsuario");
 async function verificarInventario(idUsuario) {
   let itens = [];
@@ -28,7 +39,7 @@ async function verificarInventario(idUsuario) {
       }
       for (i = 0; i < itens.length; i++) {
         let fkItemPercorrido = itens[i].fkItem;
-
+        
         if (fkItemPercorrido == 1) {
           div_item_container[0].classList.add("one");
           div_item_container[0].classList.remove("a");

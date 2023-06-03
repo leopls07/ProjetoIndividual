@@ -78,6 +78,14 @@ a{
     font-size: 18px;
     font-weight: 600;
     transition: .3s;
+    transform: translate(0,-100%);
+    opacity: 0;
+}
+
+.item-contentAfter{
+    transform: translate(0%,0%);
+    opacity: 1;
+
 }
 
 
@@ -111,6 +119,7 @@ a{
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
+    transition: .3s;
 
 }
 

@@ -46,6 +46,21 @@ function selecionarMedia(req, res){
         res.status(500).json(erro.sqlMessage);
     });  
     }
+function selecionarMediaGeral(req, res){
+    var idQuiz = req.params.idQuiz
+
+    tentativaModel.selecionarMediaGeral(idQuiz).then((resultado)=>{
+        if (resultado.length > 0) {
+            res.status(200).json(resultado);
+        } else {
+            res.status(204).send("Nenhum resultado encontrado!")
+        }
+    }).catch(function (erro) {
+        console.log(erro);
+        console.log("Houve um erro ao buscar as ultimas medidas.", erro.sqlMessage);
+        res.status(500).json(erro.sqlMessage);
+    });  
+    }
 
 
    function selecionarMelhoresTentativas(req, res){
@@ -65,10 +80,28 @@ function selecionarMedia(req, res){
     });  
     }
    
+    function selecionarTentativasPorcentagem(req,res){
+        var idQuiz = req.params.idQuiz
+
+        tentativaModel.selecionarTentativasPorcentagem(idQuiz).then((resultado)=>{
+            if (resultado.length > 0) {
+                res.status(200).json(resultado);
+            } else {
+                res.status(204).send("Nenhum resultado encontrado!")
+            }
+        }).catch(function (erro) {
+            console.log(erro);
+            console.log("Houve um erro ao buscar as ultimas medidas.", erro.sqlMessage);
+            res.status(500).json(erro.sqlMessage);
+        });  
+
+    }
 
 
 module.exports = {
     inserir,
     selecionarMedia,
-    selecionarMelhoresTentativas
+    selecionarMelhoresTentativas,
+    selecionarMediaGeral,
+    selecionarTentativasPorcentagem
 }

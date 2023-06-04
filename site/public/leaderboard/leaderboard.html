@@ -2,12 +2,43 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="stylesheet" href="leaderboard.css">
+    <link rel="stylesheet" href="../Fonts/fonts.css">
+    <link rel="shortcut icon" href="../assets/logo_gold.ico" type="image/x-icon">
+    <title>GOW Legacy</title>
 </head>
 <body>
-    #VAI DAR BOM
+    
+        <button class="btn-voltar" id="btn-voltar">Voltar</button>
+    <div class="container-graficos">
+        
+        <div class="graficos">
+            <h2>Melhores Tentativas:  God Of War 3</h2>
+            <canvas  id="chartQuiz1"></canvas>
+        </div>
+        <div class="graficos">
+            <h2>Melhores Tentativas: God Of War 2018</h2>
+            <canvas  id="chartQuiz2"></canvas>
+        </div>
+        <div class="graficos">
+            <h2>Melhores Tentativas:  God Of War Ragnarok</h2>
+            <canvas  id="chartQuiz3"></canvas>
+        </div>
+    </div>
+    <div class="aa">
+        <div class="graficoMedia">
+            <h2>Pontuação Média dos Quizzes</h2>
+            <canvas  id="chartMedia"></canvas>
+        </div>
+        <div class="graficoMedia">
+            <h2>Percentual de acerto</h2>
+            <canvas  id="chartPercentualPizza"></canvas>
+        </div>
+    </div>
+
 </body>
 </html>
 

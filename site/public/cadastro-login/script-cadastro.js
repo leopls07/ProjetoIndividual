@@ -25,7 +25,7 @@ cadastro_btn.addEventListener('click', () => {
     const verificarnumeros = numeros.some(item => senha.includes(item))
     const verificarsc = sc.some(e => senha.includes(e))
 
-    const senha_validation = verificarnumeros && verificarsc && senha.length > 6 // VARIAVEL PARA VERIFICAR SENHA VÁLIDA
+    const senha_validation = verificarnumeros && verificarsc && senha.length >= 6 // VARIAVEL PARA VERIFICAR SENHA VÁLIDA
 
     const email_validation =    // VARIAVEL PARA VERIFICAR EMAIL VÁLIDO
         email.indexOf('@') != -1 &&
@@ -48,7 +48,7 @@ cadastro_btn.addEventListener('click', () => {
     } else if (!senha_validation) {
         cadastro_erro.innerHTML = 'Senha precisa conter números e pelo menos um caractere especial.'
         cadastro_erro.style.opacity = '1'
-        if(senha.length <= 6){
+        if(senha.length < 6){
             cadastro_erro.innerHTML = 'Senha precisa conter no mínimo 6 digitos.'
         }
     } else if (senha != senha_conf) {

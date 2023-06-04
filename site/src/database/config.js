@@ -32,7 +32,7 @@ function executar(instrucao) {
             sql.connect(sqlServerConfig).then(function () {
                 return sql.query(instrucao);
             }).then(function (resultados) {
-                console.log(resultados);
+                // console.log(resultados);
                 resolve(resultados.recordset);
             }).catch(function (erro) {
                 reject(erro);
@@ -51,7 +51,7 @@ function executar(instrucao) {
                 if (erro) {
                     reject(erro);
                 }
-                console.log(resultados);
+                // console.log(resultados);
                 resolve(resultados);
             });
             conexao.on('error', function (erro) {

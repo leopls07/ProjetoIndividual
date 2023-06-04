@@ -91,6 +91,11 @@ btn_cancelar.addEventListener('click',()=>{
     
 })
 
+const btnLeaderboard = document.querySelector('#leaderboardBtn')
+
+btnLeaderboard.addEventListener('click',()=>{
+    window.location.href = './leaderboard/leaderboard.html'
+})
 
 
 btn_comecar_2018.addEventListener('click', ()=>{

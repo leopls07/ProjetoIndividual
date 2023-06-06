@@ -66,9 +66,6 @@ btn_inventario.addEventListener('click',()=>{
 
 
 
-
-
-
 btn_sair.addEventListener('click',()=>{
 
     div_confirmacao_sair.style.opacity = '0'
@@ -94,7 +91,16 @@ btn_cancelar.addEventListener('click',()=>{
 const btnLeaderboard = document.querySelector('#leaderboardBtn')
 
 btnLeaderboard.addEventListener('click',()=>{
+    if(statusUsuario == false){
+        div_aviso.style.opacity = '1'
+        resposta_aviso.innerHTML = 'Logue para ter acesso'
+        
+        setTimeout(()=>{
+            div_aviso.style.opacity = '0'
+        },1000)
+    }else{
     window.location.href = './leaderboard/leaderboard.html'
+    }
 })
 
 

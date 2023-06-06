@@ -754,63 +754,63 @@ const perguntasGow2018 = [
 ];
 
 const perguntasRagnarok = [
-  // {
-  //   pergunta: "O que é o Ragnarok?",
-  //   alternativas: [
-  //     { resposta: "É o jogo do god of war", correta: false },
-  //     { resposta: "É o inverno da mitologia nórdica", correta: false },
-  //     { resposta: "É  o fim do mundo na mitologia nórdica", correta: true },
-  //     {
-  //       resposta:
-  //         "É quando odin tenta matar kratos em uma batalha por conta de suas atitudes passadas",
-  //       correta: false,
-  //     },
-  //   ],
-  // },
+  {
+    pergunta: "O que é o Ragnarok?",
+    alternativas: [
+      { resposta: "É o jogo do god of war", correta: false },
+      { resposta: "É o inverno da mitologia nórdica", correta: false },
+      { resposta: "É  o fim do mundo na mitologia nórdica", correta: true },
+      {
+        resposta:
+          "É quando odin tenta matar kratos em uma batalha por conta de suas atitudes passadas",
+        correta: false,
+      },
+    ],
+  },
 
-  // {
-  //   pergunta: "Quantos anos tem Atreus durante o jogo?",
-  //   alternativas: [
-  //     { resposta: "15", correta: false },
-  //     { resposta: "14", correta: true },
-  //     { resposta: "16", correta: false },
-  //     { resposta: "13", correta: false },
-  //   ],
-  // },
-  // {
-  //   pergunta:
-  //     "Quais criaturas mitológicas estão presentes em God of War Ragnarok",
-  //   alternativas: [
-  //     { resposta: "Dragões", correta: false },
-  //     { resposta: "Gigantes", correta: false },
-  //     { resposta: "Trolls", correta: false },
-  //     { resposta: "Todas as alternativas", correta: true },
-  //   ],
-  // },
-  // {
-  //   pergunta:
-  //     "Qual é o objetivo principal de Kratos e Atreus em God of War Ragnarok",
-  //   alternativas: [
-  //     {
-  //       resposta:
-  //         "Trazer os poderes do ragnarok assim salvando sua esposa Faye",
-  //       correta: false,
-  //     },
-  //     { resposta: "Destruir todos os deuses nórdicos", correta: false },
-  //     { resposta: "Dominar os reinos nórdicos", correta: false },
-  //     { resposta: "Evitar o Ragnarok e salvar a humanidade", correta: true },
-  //   ],
-  // },
-  // {
-  //   pergunta:
-  //     "Quem é o irmão de Thor que Kratos e Atreus encontram em sua jornada?",
-  //   alternativas: [
-  //     { resposta: "Magni", correta: false },
-  //     { resposta: "Freyr", correta: false },
-  //     { resposta: "Tyr", correta: false },
-  //     { resposta: "Modi", correta: true },
-  //   ],
-  // },
+  {
+    pergunta: "Quantos anos tem Atreus durante o jogo?",
+    alternativas: [
+      { resposta: "15", correta: false },
+      { resposta: "14", correta: true },
+      { resposta: "16", correta: false },
+      { resposta: "13", correta: false },
+    ],
+  },
+  {
+    pergunta:
+      "Quais criaturas mitológicas estão presentes em God of War Ragnarok",
+    alternativas: [
+      { resposta: "Dragões", correta: false },
+      { resposta: "Gigantes", correta: false },
+      { resposta: "Trolls", correta: false },
+      { resposta: "Todas as alternativas", correta: true },
+    ],
+  },
+  {
+    pergunta:
+      "Qual é o objetivo principal de Kratos e Atreus em God of War Ragnarok",
+    alternativas: [
+      {
+        resposta:
+          "Trazer os poderes do ragnarok assim salvando sua esposa Faye",
+        correta: false,
+      },
+      { resposta: "Destruir todos os deuses nórdicos", correta: false },
+      { resposta: "Dominar os reinos nórdicos", correta: false },
+      { resposta: "Evitar o Ragnarok e salvar a humanidade", correta: true },
+    ],
+  },
+  {
+    pergunta:
+      "Quem é o irmão de Thor que Kratos e Atreus encontram em sua jornada?",
+    alternativas: [
+      { resposta: "Magni", correta: false },
+      { resposta: "Freyr", correta: false },
+      { resposta: "Tyr", correta: false },
+      { resposta: "Modi", correta: true },
+    ],
+  },
   {
     pergunta: "Qual é a nova habilidade de Atreus?",
     alternativas: [
@@ -820,6 +820,43 @@ const perguntasRagnarok = [
       { resposta: "Poder de cura", correta: false },
     ],
   },
+  {
+    pergunta: "Quem é responsável por levar a serpente do mundo de volta para o passado",
+    alternativas: [
+      { resposta: "Odin", correta: false },
+      { resposta: "Freya", correta: false },
+      { resposta: "Thor", correta: true },
+      { resposta: "Kratos", correta: false },
+    ],
+  },
+  {
+    pergunta: "Quem forjou a lança draupnir",
+    alternativas: [
+      { resposta: "Sindri", correta: false },
+      { resposta: "Brok", correta: false },
+      { resposta: "Senhora da Forja", correta: true },
+      { resposta: "Noé", correta: false },
+    ],
+  },
+  {
+    pergunta: "Quem é o primeiro Deus a receber atreus em asgard",
+    alternativas: [
+      { resposta: "Thor", correta: false },
+      { resposta: "Zeus", correta: false },
+      { resposta: "Odin", correta: false },
+      { resposta: "Heimdall", correta: true },
+    ],
+  },
+  {
+    pergunta: "Contra quem é a primeira luta",
+    alternativas: [
+      { resposta: "Thor", correta: false },
+      { resposta: "Atreus", correta: true },
+      { resposta: "Odin", correta: false },
+      { resposta: "Um troll", correta: false },
+    ],
+  },
+  
 ];
 
 const div_confirmacao_comeco = document.querySelector("#div-confirmacao-quiz");

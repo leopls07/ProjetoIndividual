@@ -19,7 +19,7 @@ body{
 
 .btn-voltar{
     position: absolute;
-    margin: .7rem 0 0 .7rem;
+    top: .3rem ; left: .3rem;
     padding: .3rem .8rem;
     color: white;
     border-radius: 5px;
@@ -43,41 +43,78 @@ body{
 }
 
 .container-graficos{
-    padding: 20px;
+    padding: 3.5rem;
     width: 100vw;
-    height: 25vw;
+    height: 100vh;
     display: flex;
     justify-content: center;  
-    align-items: center;  
-    gap: 1rem;
-    flex-wrap: wrap;
+    gap: 2rem;
 }
 
-.graficos{
-    flex:1;
+.container-quiz{
+    padding: 1rem;
+    width: 33%;
+    height: 105%;
+    border-radius: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+    background-color: #9b1f1a;
+    outline-offset: 3px;
+    outline: 2px solid white;
+    justify-content: space-between;
+
+    background: rgba(0, 0, 0, 0.69);
+box-shadow: 0 8px 32px 0 rgba(244, 244, 244, 0.545);
+backdrop-filter: blur( 5.5px );
+-webkit-backdrop-filter: blur( 5.5px );
+border-radius: 10px;
 }
+
+
 
  h2{
     width: 100%;
     text-align: center;
     color: white;
     font-family: 'clashM';
-    letter-spacing: .2ch;
+    letter-spacing: .1ch;
 }
 
-.graficoMedia{
-    width: 450px;
-    height: 450px;
-}
 
-canvas{
-    border-radius: 5px;
+
+.graficoBarra canvas{
+    max-height: 320px;
+    border-radius: .5rem;
     color: rgb(255, 255, 255);
     padding: 1rem;
     flex: 1;
     border: rgb(255, 255, 255) 2px solid;
     background-color: rgb(26, 25, 25);
+
+
 }
+
+.graficoPizza canvas{
+    max-height: 320px;
+    border-radius: .5rem;
+    color: rgb(255, 255, 255);
+    padding: 1rem;
+    flex: 1;
+
+    
+}
+
+p{
+    font-size: 26px;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%,10%);
+    color: white;
+    background-color: #601111;
+    border-radius: 5px;
+    padding: 3px 7px;
+    }
 
 .aa{
     display: flex;

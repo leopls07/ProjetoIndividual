@@ -6,9 +6,9 @@ const ctx = document.getElementById('chartQuiz1');
 var chartQuiz1 = new Chart(ctx, {
     type: 'bar',
     data: {
-      labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+      labels: [],
       datasets: [{
-        label: '# of Votes',
+        label: '',
         data: [],
         borderWidth: 1,
         backgroundColor : '#862c28'
@@ -30,9 +30,9 @@ const ctx2 = document.getElementById('chartQuiz2');
 var chartQuiz2 = new Chart(ctx2, {
   type: 'bar',
   data: {
-    labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+    labels: [],
     datasets: [{
-      label: '# of Votes',
+      label: 'Pontuação',
       data: [],
       borderWidth: 1,
       backgroundColor : '#862c28',
@@ -58,7 +58,7 @@ var chartQuiz3 =  new Chart(ctx3, {
     data: {
       labels: [],
       datasets: [{
-        label: '# of Votes',
+        label: 'Pontuação',
         data: [],
         borderWidth: 1,
         backgroundColor : '#862c28'
@@ -98,8 +98,7 @@ var chartQuiz3 =  new Chart(ctx3, {
 
 
   
-  const ctx5 = document.querySelector('#chartPercentualPizza')
-
+  const ctx5 = document.querySelector('#chartPercentualPizzaQuiz1')
 var chartPizzaQuiz1 =  new Chart(ctx5,{
    
       type: 'pie',
@@ -109,18 +108,43 @@ var chartPizzaQuiz1 =  new Chart(ctx5,{
           label: 'Porcentagem',
           data: [],
           borderWidth: 1,
-          backgroundColor: ['#862c28', '#00000']
+          backgroundColor: ['rgba(90, 0, 0, 1)' ,'rgba(42, 0, 0, 1)']
         }]
       },
-      options: {
-        scales: {
-          y: {
-            beginAtZero: true
-          }
-        }
-      }
+      
+      
   }) 
 
+  const ctx6 = document.querySelector('#chartPercentualPizzaQuiz2')
+ var chartPizzaQuiz2 = new Chart(ctx6,{
+      type: 'pie',
+      data: {
+        labels: [],
+        datasets: [{
+          label: 'Porcentagem',
+          data: [],
+          borderWidth: 1,
+          backgroundColor: ['rgba(90, 0, 0, 1)' ,'rgba(42, 0, 0, 1)']
+        }]
+      },
+      
+    }) 
+
+
+  const ctx7 = document.querySelector('#chartPercentualPizzaQuiz3')
+  var chartPizzaQuiz3 = new Chart(ctx7,{
+    type: 'pie',
+    data: {
+      labels: [],
+      datasets: [{
+        label: 'Porcentagem',
+        data: [],
+        borderWidth: 1,
+        backgroundColor: ['rgba(90, 0, 0, 1)' ,'rgba(42, 0, 0, 1)']
+      }]
+    },
+    
+  }) 
 
 async function selecionarMelhoresTentativasQuiz1(){
 
@@ -244,8 +268,7 @@ async function pegarPontuacaoMediaQuiz() {
     });
   }
 
-  var idQuizzes = [1,2,3]
-  async function selecionarTentativasPorcentagem(){
+  async function selecionarTentativasPorcentagemQuiz1(){
   
     await fetch(`/tentativas/selecionarTentativasPorcentagem/1`,{
       cache: 'no-store',
@@ -253,7 +276,7 @@ async function pegarPontuacaoMediaQuiz() {
     }).then((res)=>{
       if(res.ok){
         return res.json().then((resposta)=>{
-          console.log(resposta)
+          // console.log(resposta)
           let menor = resposta[0].menor
           let maior = resposta[0].maior
 
@@ -264,12 +287,14 @@ async function pegarPontuacaoMediaQuiz() {
 
           chartPizzaQuiz1.data.datasets[0].label = 'Porcentagem'
           chartPizzaQuiz1.data.datasets[0].data = []
+          chartPizzaQuiz1.data.labels = []
+
 
 
           chartPizzaQuiz1.data.datasets[0].data.push(pctMenor.toFixed(2))
-          chartPizzaQuiz1.data.labels.push('Abaixo') 
+          chartPizzaQuiz1.data.labels.push('Acima de 50%') 
           chartPizzaQuiz1.data.datasets[0].data.push(pctMaior.toFixed(2))
-          chartPizzaQuiz1.data.labels.push('Acima') 
+          chartPizzaQuiz1.data.labels.push('Abaixo de 50%') 
           chartPizzaQuiz1.update()
 
         })
@@ -277,9 +302,75 @@ async function pegarPontuacaoMediaQuiz() {
     }).catch((err)=>{
       console.log(err)
     })
-
-
+}
+  async function selecionarTentativasPorcentagemQuiz2(){
   
+    await fetch(`/tentativas/selecionarTentativasPorcentagem/2`,{
+      cache: 'no-store',
+      method: 'GET'
+    }).then((res)=>{
+      if(res.ok){
+        return res.json().then((resposta)=>{
+          // console.log(resposta)
+          let menor = resposta[0].menor
+          let maior = resposta[0].maior
+
+
+          let pctMaior = (menor/ (menor + maior) )*100
+          let pctMenor = 100 - pctMaior
+          
+
+          chartPizzaQuiz2.data.datasets[0].label = 'Porcentagem'
+          chartPizzaQuiz2.data.datasets[0].data = []
+          chartPizzaQuiz2.data.labels = []
+
+
+
+          chartPizzaQuiz2.data.datasets[0].data.push(pctMenor.toFixed(2))
+          chartPizzaQuiz2.data.labels.push('Acima de 50%') 
+          chartPizzaQuiz2.data.datasets[0].data.push(pctMaior.toFixed(2))
+          chartPizzaQuiz2.data.labels.push('Abaixo de 50%') 
+          chartPizzaQuiz2.update()
+
+        })
+      }
+    }).catch((err)=>{
+      console.log(err)
+    })
+}
+  async function selecionarTentativasPorcentagemQuiz3(){
+  
+    await fetch(`/tentativas/selecionarTentativasPorcentagem/3`,{
+      cache: 'no-store',
+      method: 'GET'
+    }).then((res)=>{
+      if(res.ok){
+        return res.json().then((resposta)=>{
+          // console.log(resposta)
+          let menor = resposta[0].menor
+          let maior = resposta[0].maior
+
+
+          let pctMaior = (menor/ (menor + maior) )*100
+          let pctMenor = 100 - pctMaior
+          
+
+          chartPizzaQuiz3.data.datasets[0].label = 'Porcentagem'
+          chartPizzaQuiz3.data.datasets[0].data = []
+          chartPizzaQuiz3.data.labels = []
+
+
+          chartPizzaQuiz3.data.datasets[0].data.push(pctMenor.toFixed(2))
+          chartPizzaQuiz3.data.labels.push('Acima de 50%') 
+          chartPizzaQuiz3.data.datasets[0].data.push(pctMaior.toFixed(2))
+          chartPizzaQuiz3.data.labels.push('Abaixo de 50%') 
+          chartPizzaQuiz3.update()
+
+        })
+      }
+    }).catch((err)=>{
+      console.log(err)
+    })
 }
     
     function atualizarGraficos(){
@@ -288,10 +379,12 @@ async function pegarPontuacaoMediaQuiz() {
     selecionarMelhoresTentativasQuiz2()
     selecionarMelhoresTentativasQuiz3()
 
-    pegarPontuacaoMediaQuiz()   
-}
+    // pegarPontuacaoMediaQuiz()   
+    selecionarTentativasPorcentagemQuiz1()
+    selecionarTentativasPorcentagemQuiz2()
+    selecionarTentativasPorcentagemQuiz3()
+  }
   atualizarGraficos()
-  selecionarTentativasPorcentagem()
 
 setInterval(atualizarGraficos,1000)
 

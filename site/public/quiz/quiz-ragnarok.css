@@ -168,9 +168,7 @@ background-color: #ff9393;
     font-size: 20px;
     cursor: pointer;
 }
-.verClassificacao:hover{
-    border-bottom: #000000 2px solid;
-}
+
 
 .classificacao-container{
     width: 100%;

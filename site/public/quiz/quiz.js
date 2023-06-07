@@ -19,6 +19,9 @@ window.onload = ()=>{
   window.scrollTo(0,0)
 }
 
+
+
+
 function randomizar() {
   return Math.round(Math.random()) - 0.5;
 }
@@ -105,7 +108,7 @@ function selecionarResposta(e) {
   proximoBtn.style.opacity = "1";
   proximoBtn.style.display = "block";
 }
-
+function eventListenerDash(){window.location.href='../leaderboard/leaderboard.html'}
 async function mostrarPontuacao() {
   resetarQuestoesAnteriores();
 
@@ -124,8 +127,9 @@ async function mostrarPontuacao() {
   } <br>
     Pontuação média do quiz: ${pontuacaoMediaDoQuiz} `;
 
-  questaoAtualElement.innerHTML = "Ver classificação 🏆";
+  questaoAtualElement.innerHTML = "Ir para dashboard 📈";
   questaoAtualElement.classList.add("verClassificacao");
+  questaoAtualElement.addEventListener('click', eventListenerDash )
 }
 let tempoFinal = 0;
 function handleNextButton() {
@@ -178,6 +182,8 @@ proximoBtn.addEventListener("click", () => {
     comecarQuiz();
     tentativas_container.innerHTML = "";
     topico_div.style.display = "none";
+    questaoAtualElement.removeEventListener('click', eventListenerDash) 
+    questaoAtualElement.classList.remove('verClassificacao') 
   }
 });
 
@@ -656,9 +662,9 @@ const perguntasGow2018 = [
     pergunta: "Quantos anos tem Atreus durante o jogo?",
     alternativas: [
       { resposta: "15", correta: false },
-      { resposta: "14", correta: true },
-      { resposta: "16", correta: false },
       { resposta: "13", correta: false },
+      { resposta: "12", correta: false },
+      { resposta: "11", correta: true },
     ],
   },
   {

@@ -26,18 +26,18 @@ CREATE TABLE jogo (
     foreign key (fkQuiz) references quiz (idQuiz)
 );
 
-CREATE TABLE plataforma(
-    idPlataforma int PRIMARY KEY AUTO_INCREMENT,
-    plataforma  VARCHAR(50)
-);
+-- CREATE TABLE plataforma(
+--     idPlataforma int PRIMARY KEY AUTO_INCREMENT,
+--     plataforma  VARCHAR(50)
+-- );
 
-CREATE TABLE plataformaJogo(
-    fkJogo int,
-    fkPlataforma int,
-    foreign key (fkJogo) references jogo (idJogo),
-    foreign key (fkPlataforma) references plataforma (idPlataforma),
-    constraint pkComposta primary key (fkJogo,fkPlataforma)
-);
+-- CREATE TABLE plataformaJogo(
+--     fkJogo int,
+--     fkPlataforma int,
+--     foreign key (fkJogo) references jogo (idJogo),
+--     foreign key (fkPlataforma) references plataforma (idPlataforma),
+--     constraint pkComposta primary key (fkJogo,fkPlataforma)
+-- );
 
 CREATE TABLE tentativa(
     idTentativa int primary key AUTO_INCREMENT,

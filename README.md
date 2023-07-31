@@ -11,5 +11,5 @@ Tecnologias utilizadas
 
 HTML e Javascript - Estrutura do site
 CSS - Estilização do site
-NodeJS - Persistencia dos dados na base
+NodeJS - Persistencia dos dados na base OBS: é preciso ter o node instalado e usar os comandos npm install e npm start para rodar o site com suas funcionalidades.
 MySQL - Sistema de gerenciamento de banco de dados
